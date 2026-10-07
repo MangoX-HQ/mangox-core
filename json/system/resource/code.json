@@ -1,0 +1,16 @@
+{
+  "title": "Code",
+  "slug": "code",
+  "entity": [
+    "code"
+  ],
+  "action": [
+    "list",
+    "read",
+    "create",
+    "update",
+    "delete"
+  ],
+  "is_tenant": true,
+  "main": true
+}

@@ -1,0 +1,25 @@
+{
+  "title": "policy action admin",
+  "slug": "policy-action-admin",
+  "resource": [
+    "action"
+  ],
+  "action": [
+    "list",
+    "delete",
+    "update",
+    "cancel",
+    "approve",
+    "create",
+    "read"
+  ],
+  "role": [
+    "admin"
+  ],
+  "root_entity": [
+    "action"
+  ],
+  "condition": "select=",
+  "data": "",
+  "type": "local"
+}

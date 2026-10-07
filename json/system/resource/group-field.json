@@ -1,0 +1,9 @@
+{
+  "title": "group-field",
+  "slug": "group-field",
+  "entity": ["group-field"],
+  "is_tenant": true,
+  "mongorest": "",
+  "action": ["list","read","create","update","delete"],
+  "main": true
+}

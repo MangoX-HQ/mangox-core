@@ -1,0 +1,168 @@
+{
+  "title": "API Key",
+  "collection_name": "api-key",
+  "mongodb_save_data": "api-key",
+  "databaseType": "mongodb",
+  "public_entity": false,
+  "use_timestamp": false,
+  "use_slug": false,
+  "use_locale": false,
+  "use_block": false,
+  "use_posttype": false,
+  "use_parent": false,
+  "use_parent_delete_childs": false,
+  "use_sync_relationship_multiply_language": false,
+  "use_import": false,
+  "comment_mode": false,
+  "is_tenant": true,
+  "system": true,
+  "json_schema": {
+    "type": "object",
+    "required": [
+      "name",
+      "user_id",
+      "prefix"
+    ],
+    "dependencies": {},
+    "properties": {
+      "name": {
+        "title": "Name",
+        "type": "string",
+        "widget": "shortAnswer",
+        "filter": true,
+        "description": "Tên gợi nhớ key (do user đặt)."
+      },
+      "user_id": {
+        "title": "User",
+        "type": "string",
+        "typeRelation": {
+          "_id": "user",
+          "title": "user",
+          "type": "1-1"
+        },
+        "widget": "relation",
+        "typeSelect": "single",
+        "filter": true,
+        "readonly": true
+      },
+      "email": {
+        "title": "Email",
+        "type": "string",
+        "widget": "shortAnswer",
+        "filter": true,
+        "readonly": true
+      },
+      "role_name": {
+        "title": "Role",
+        "type": "string",
+        "widget": "shortAnswer",
+        "filter": true,
+        "readonly": true
+      },
+      "tenant_id": {
+        "title": "Tenant",
+        "type": "string",
+        "widget": "shortAnswer",
+        "filter": true,
+        "readonly": true
+      },
+      "prefix": {
+        "title": "Prefix",
+        "type": "string",
+        "widget": "shortAnswer",
+        "filter": true,
+        "readonly": true,
+        "description": "12-hex prefix — public id của key (mgs_<prefix>_<secret>)."
+      },
+      "key_hash": {
+        "title": "Key Hash",
+        "type": "string",
+        "widget": "shortAnswer",
+        "readonly": true,
+        "description": "bcrypt hash của full key. KHÔNG bao giờ trả về API list."
+      },
+      "mcp_enabled_tools": {
+        "title": "MCP Enabled Tools",
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "widget": "json",
+        "description": "Whitelist tool MCP key được phép gọi. null = tất cả; [] = chặn hết."
+      },
+      "last_used_at": {
+        "title": "Last Used",
+        "type": "string",
+        "widget": "datetime",
+        "readonly": true,
+        "filter": true
+      },
+      "expires_at": {
+        "title": "Expires",
+        "type": "string",
+        "widget": "datetime",
+        "filter": true,
+        "description": "Bỏ trống = không hết hạn."
+      },
+      "revoked_at": {
+        "title": "Revoked",
+        "type": "string",
+        "widget": "datetime",
+        "readonly": true,
+        "filter": true,
+        "description": "Set khi DELETE /api-keys/:id (soft delete)."
+      }
+    }
+  },
+  "ui_schema": {
+    "name": {
+      "ui:widget": "shortAnswer"
+    },
+    "user_id": {
+      "ui:widget": "relation"
+    },
+    "email": {
+      "ui:widget": "shortAnswer"
+    },
+    "role_name": {
+      "ui:widget": "shortAnswer"
+    },
+    "tenant_id": {
+      "ui:widget": "shortAnswer"
+    },
+    "prefix": {
+      "ui:widget": "shortAnswer"
+    },
+    "key_hash": {
+      "ui:widget": "shortAnswer",
+      "ui:options": {
+        "inputType": "password"
+      }
+    },
+    "mcp_enabled_tools": {
+      "ui:widget": "json"
+    },
+    "last_used_at": {
+      "ui:widget": "datetime"
+    },
+    "expires_at": {
+      "ui:widget": "datetime"
+    },
+    "revoked_at": {
+      "ui:widget": "datetime"
+    },
+    "ui:order": [
+      "name",
+      "user_id",
+      "email",
+      "role_name",
+      "tenant_id",
+      "prefix",
+      "key_hash",
+      "mcp_enabled_tools",
+      "expires_at",
+      "last_used_at",
+      "revoked_at"
+    ]
+  }
+}

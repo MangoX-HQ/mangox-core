@@ -1,0 +1,29 @@
+{
+  "title": "policy seopath admin",
+  "slug": "policy-seopath-admin",
+  "resource": [
+    "seopath"
+  ],
+  "root_entity": [
+    "seopath"
+  ],
+  "role": [
+    "admin"
+  ],
+  "action": [
+    "list",
+    "read",
+    "create",
+    "update",
+    "delete"
+  ],
+  "condition": "select=*",
+  "data": [],
+  "condition_context": null,
+  "condtion_body": "",
+  "code_context": "",
+  "code": "",
+  "piority": "0",
+  "type": "local",
+  "system": true
+}

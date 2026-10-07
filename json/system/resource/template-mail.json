@@ -1,0 +1,17 @@
+{
+  "title": "Template Mail",
+  "slug": "template-mail",
+  "entity": [
+    "template-mail"
+  ],
+  "is_tenant": true,
+  "mongorest": "",
+  "action": [
+    "list",
+    "read",
+    "create",
+    "update",
+    "delete"
+  ],
+  "main": true
+}

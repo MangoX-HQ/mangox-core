@@ -1,0 +1,241 @@
+{
+  "title": "Category",
+  "databaseType": "mongodb",
+  "collection_name": "category",
+  "mongodb_save_data": "category",
+  "entity_group": [],
+  "use_parent": true,
+  "use_parent_delete_childs": false,
+  "use_sync_relationship_multiply_language": true,
+  "use_locale": true,
+  "use_block": false,
+  "use_seo_path": true,
+  "use_pinned": false,
+  "use_posttype": false,
+  "use_timestamp": false,
+  "use_import": false,
+  "comment_mode": false,
+  "use_slug": true,
+  "public_entity": true,
+  "json_schema": {
+    "type": "object",
+    "expanded": true,
+    "required": [],
+    "properties": {
+      "is_root": {
+        "title": "Is Root",
+        "type": "string",
+        "widget": "boolean",
+        "expanded": true,
+        "require": false,
+        "default": true,
+        "hidden": true
+      },
+      "title": {
+        "title": "Title",
+        "type": "string",
+        "description": "Nhập thông tin tiêu đề",
+        "widget": "shortAnswer",
+        "expanded": true,
+        "require": true,
+        "filter": true
+      },
+      "slug": {
+        "title": "Slug",
+        "type": "string",
+        "widget": "UriKeyGen",
+        "expanded": true,
+        "require": true,
+        "depend_field": "root_title",
+        "filter": true,
+        "description": "Nhập thông tin slug"
+      },
+      "parent_id": {
+        "title": "Parent",
+        "type": "string",
+        "widget": "relation",
+        "expanded": true,
+        "require": false,
+        "typeRelation": {
+          "title": "category",
+          "id": "category",
+          "filter": {
+            "combinator": "and",
+            "rules": [],
+            "id": "159418f2-c9a3-4956-92b4-158f57e21a02"
+          }
+        },
+        "hidden": false,
+        "filter": true,
+        "refValue": "locale_id",
+        "refValueAdmin": "no_objectId"
+      },
+      "post_type": {
+        "title": "Post Type",
+        "type": "string",
+        "description": "Chọn posttype",
+        "widget": "relation",
+        "expanded": true,
+        "require": true,
+        "typeRelation": {
+          "_id": "mongodb_collection_name",
+          "title": "entity",
+          "type": "1-n",
+          "filter": {
+            "combinator": "and",
+            "rules": [
+              {
+                "id": "aa3aaed6-5f7c-44ac-ab00-5cd48aec1970",
+                "field": "use_posttype",
+                "operator": "eq",
+                "valueSource": "value",
+                "value": true
+              }
+            ],
+            "id": "fafa4a67-c57c-4a72-9c69-16aae6ce3af9"
+          }
+        },
+        "typeSelect": "once",
+        "filter": true,
+        "hidden": false,
+        "refValue": "collection_name"
+      },
+      "featured_image": {
+        "title": "Featured Image",
+        "type": "string",
+        "description": "Hình ảnh đại diện",
+        "widget": "file",
+        "expanded": true,
+        "require": false
+      },
+      "short_description": {
+        "widget": "longAnswer",
+        "customRole": "textarea",
+        "title": "Short Description",
+        "type": "string",
+        "description": "Nhập mô tả"
+      },
+      "long_description": {
+        "widget": "longAnswer",
+        "customRole": "texteditor",
+        "title": "Long Description",
+        "type": "string",
+        "description": "Nhập nội dung"
+      },
+      "session_seo": {
+        "title": "Session SEO",
+        "type": "object",
+        "description": "Nhập thông tin thẻ SEO",
+        "expanded": true,
+        "properties": {
+          "title": {
+            "title": "Meta Title",
+            "type": "string",
+            "widget": "shortAnswer",
+            "expanded": true,
+            "require": false,
+            "description": "Nhập thông tin meta title"
+          },
+          "short_description": {
+            "title": "Meta Description",
+            "type": "string",
+            "description": "Chọn nội dung cho thẻ meta",
+            "widget": "shortAnswer",
+            "expanded": true,
+            "require": false
+          }
+        },
+        "dependencies": {},
+        "required": []
+      },
+      "file": {
+        "type": "string",
+        "widget": "file",
+        "title": "File"
+      },
+      "locale_id": {
+        "title": "Locale ID",
+        "type": "string",
+        "widget": "shortAnswer",
+        "expanded": true,
+        "require": false,
+        "filter": true,
+        "hidden": true
+      }
+    },
+    "dependencies": {}
+  },
+  "ui_schema": {
+    "is_root": {
+      "ui:widget": "boolean"
+    },
+    "title": {
+      "ui:widget": "shortAnswer"
+    },
+    "slug": {
+      "ui:widget": "UriKeyGen"
+    },
+    "parent_id": {
+      "ui:widget": "relation"
+    },
+    "post_type": {
+      "ui:widget": "relation"
+    },
+    "featured_image": {
+      "ui:widget": "file"
+    },
+    "short_description": {
+      "ui:widget": "longAnswer"
+    },
+    "long_description": {
+      "ui:widget": "longAnswer"
+    },
+    "session_seo": {
+      "title": {
+        "ui:widget": "shortAnswer"
+      },
+      "short_description": {
+        "ui:widget": "shortAnswer"
+      },
+      "ui:order": [
+        "title",
+        "short_description"
+      ]
+    },
+    "file": {
+      "ui:widget": "file"
+    },
+    "locale_id": {
+      "ui:widget": "shortAnswer"
+    },
+    "ui:order": [
+      "is_root",
+      "title",
+      "slug",
+      "parent_id",
+      "post_type",
+      "featured_image",
+      "short_description",
+      "long_description",
+      "session_seo",
+      "file",
+      "locale_id"
+    ]
+  },
+  "settings": {},
+  "languages": [
+    {
+      "locale": "vi",
+      "slug": "category"
+    },
+    {
+      "locale": "en",
+      "slug": "category"
+    }
+  ],
+  "entity_setting": {
+    "fe_list": "is_root,\ntitle,\nslug,\npost_type(),\npost_type.title,\npost_type.mongodb_collection_name,\nlocale_id,\nlocale,\nparent_id,\nlanguages,\nmeta_data.slug,\nmeta_data.type,\nmeta_data.redirect_to,\nmeta_data.path"
+  },
+  "customTabsList": [],
+  "reason": null
+}

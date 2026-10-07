@@ -1,0 +1,23 @@
+{
+  "title": "policy entity admin",
+  "slug": "policy-entity-admin",
+  "resource": [
+    "entity"
+  ],
+  "action": [
+    "list",
+    "delete",
+    "update",
+    "create"
+  ],
+  "role": [
+    "admin"
+  ],
+  "root_entity": [
+    "entity"
+  ],
+  "condition": "select=",
+  "data": "",
+  "type": "local",
+  "system": true
+}

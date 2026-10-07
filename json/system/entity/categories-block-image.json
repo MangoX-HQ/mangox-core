@@ -1,0 +1,73 @@
+{
+  "title": "Categories Block Image",
+  "mongodb_collection_name": "categories-block-image",
+  "json_schema": {
+    "type": "object",
+    "properties": {
+      "title": {
+        "title": "Title",
+        "type": "string",
+        "widget": "shortAnswer",
+        "filter": true
+      },
+      "slug": {
+        "widget": "UriKeyGen",
+        "title": "Slug",
+        "type": "string",
+        "depend_field": "root_title"
+      }
+    },
+    "required": [],
+    "dependencies": {}
+  },
+  "ui_schema": {
+    "title": {
+      "ui:widget": "shortAnswer"
+    },
+    "slug": {
+      "ui:widget": "UriKeyGen"
+    },
+    "ui:order": [
+      "title",
+      "slug"
+    ]
+  },
+  "languages": [
+    {
+      "locale": "vi",
+      "slug": "categories-block-image"
+    },
+    {
+      "locale": "en",
+      "slug": "categories-block-image"
+    }
+  ],
+  "use_locale": false,
+  "use_parent": false,
+  "use_parent_delete_childs": false,
+  "use_block": false,
+  "use_content_review": false,
+  "use_like": false,
+  "use_comment": false,
+  "use_save": false,
+  "use_seo_path": true,
+  "entity_group": [],
+  "entity_setting": {},
+  "settings": {},
+  "unique_keys": "",
+  "public_entity": true,
+  "use_approval_process": false,
+  "use_timestamp": false,
+  "use_posttype": false,
+  "meta_data": {},
+  "use_slug": true,
+  "comment_mode": false,
+  "customTabsList": [],
+  "status": "1",
+  "use_import": false,
+  "use_sync_relationship_multiply_language": false,
+  "tenant_view": [],
+  "databaseType": "mongodb",
+  "collection_name": "categories-block-image",
+  "mongodb_save_data": "categories-block-image"
+}

@@ -1,0 +1,68 @@
+{
+  "title": "Lead",
+  "collection_name": "lead",
+  "mongodb_save_data": "lead",
+  "databaseType": "mongodb",
+  "public_entity": false,
+  "system": true,
+  "use_timestamp": true,
+  "use_slug": false,
+  "use_locale": false,
+  "use_block": false,
+  "use_posttype": false,
+  "use_parent": false,
+  "use_parent_delete_childs": false,
+  "use_seo_path": false,
+  "use_import": false,
+  "use_approval_process": false,
+  "use_content_review": false,
+  "use_like": false,
+  "use_save": false,
+  "use_sync_relationship_multiply_language": false,
+  "comment_mode": false,
+  "languages": [],
+  "entity_group": null,
+  "entity_setting": {},
+  "settings": {},
+  "json_schema": {
+    "type": "object",
+    "required": ["email"],
+    "dependencies": {},
+    "properties": {
+      "full_name": { "title": "Họ và tên", "type": "string", "widget": "shortAnswer" },
+      "email":     { "title": "Email", "type": "string", "widget": "shortAnswer", "filter": true },
+      "phone":     { "title": "Số điện thoại", "type": "string", "widget": "shortAnswer" },
+      "phone_normalized": { "title": "SĐT chuẩn hoá (E.164)", "type": "string", "widget": "shortAnswer", "filter": true },
+      "company":   { "title": "Tổ chức / Doanh nghiệp", "type": "string", "widget": "shortAnswer" },
+      "assigned_to": {
+        "title": "Phụ trách",
+        "type": "string",
+        "widget": "relation",
+        "typeRelation": { "title": "user", "_id": "user", "type": "1-n" },
+        "typeSelect": "single",
+        "filter": true
+      },
+      "priority": {
+        "title": "Ưu tiên",
+        "type": "string",
+        "widget": "select",
+        "choices": [
+          { "key": "Thấp", "value": "low" },
+          { "key": "Trung bình", "value": "medium" },
+          { "key": "Cao", "value": "high" }
+        ]
+      },
+      "note": { "title": "Ghi chú", "type": "string", "widget": "textarea" },
+      "tags": { "title": "Tags", "type": "array", "widget": "tags", "items": { "type": "string" } },
+      "submission_count": { "title": "Số lần submit", "type": "number", "widget": "numberInput" },
+      "last_submitted_at": { "title": "Submit gần nhất", "type": "string", "widget": "datetime" }
+    }
+  },
+  "ui_schema": {
+    "ui:order": [
+      "full_name", "email", "phone", "phone_normalized", "company",
+      "priority", "assigned_to", "tags", "note",
+      "submission_count", "last_submitted_at"
+    ]
+  }
+}

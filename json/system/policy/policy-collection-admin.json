@@ -1,0 +1,23 @@
+{
+  "title": "policy collection admin",
+  "slug": "policy-collection-admin",
+  "resource": [
+    "collection"
+  ],
+  "action": [
+    "list",
+    "delete",
+    "update",
+    "create",
+    "read"
+  ],
+  "role": [
+    "admin"
+  ],
+  "root_entity": [
+    "collection"
+  ],
+  "condition": "select=",
+  "data": "",
+  "type": "local"
+}

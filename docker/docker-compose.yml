@@ -1,0 +1,12 @@
+services:
+  mangox-backend-api:
+    image: ghcr.io/mangoads-hq/backend-deploy-tenant:latest
+    pull_policy: always
+    container_name: mangox-backend-api
+    ports:
+      - "5555:5555"
+    env_file:
+      - ../.env
+    volumes:
+      - ../json:/app/json
+    restart: unless-stopped

@@ -1,0 +1,23 @@
+{
+  "title": "Setting admin full",
+  "slug": "policy-setting-admin",
+  "resource": [
+    "setting"
+  ],
+  "root_entity": [
+    "setting"
+  ],
+  "role": [
+    "admin"
+  ],
+  "action": [
+    "list",
+    "read",
+    "create",
+    "update",
+    "delete"
+  ],
+  "condition": "",
+  "type": "local",
+  "system": true
+}

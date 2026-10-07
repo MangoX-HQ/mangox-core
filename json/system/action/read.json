@@ -1,0 +1,12 @@
+{
+  "title": "Read",
+  "slug": "read",
+  "method": "GET",
+  "path": "/:id",
+  "auth": true,
+  "type": "internal",
+  "header": "",
+  "body": "",
+  "locale": "vi",
+  "tenant_id": null
+}

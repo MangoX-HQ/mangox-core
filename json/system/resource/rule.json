@@ -1,0 +1,16 @@
+{
+  "title": "Rule",
+  "slug": "rule",
+  "entity": [
+    "rule"
+  ],
+  "is_tenant": true,
+  "action": [
+    "list",
+    "read",
+    "create",
+    "update",
+    "delete"
+  ],
+  "main": true
+}

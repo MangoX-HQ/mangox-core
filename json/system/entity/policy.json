@@ -1,0 +1,328 @@
+{
+  "title": "Policy",
+  "databaseType": "mongodb",
+  "collection_name": "policy",
+  "mongodb_save_data": "policy",
+  "entity_group": [],
+  "use_parent_delete_childs": false,
+  "use_sync_relationship_multiply_language": false,
+  "use_locale": false,
+  "use_block": false,
+  "use_timestamp": false,
+  "use_import": false,
+  "comment_mode": false,
+  "use_slug": true,
+  "public_entity": true,
+  "unique_keys": "",
+  "json_schema": {
+    "type": "object",
+    "properties": {
+      "title": {
+        "title": "Title",
+        "type": "string",
+        "widget": "shortAnswer",
+        "filter": true
+      },
+      "slug": {
+        "widget": "UriKeyGen",
+        "title": "Slug",
+        "type": "string",
+        "filter": true,
+        "depend_field": "title"
+      },
+      "root_entity": {
+        "title": "Root Entity",
+        "type": "string",
+        "widget": "relation",
+        "typeRelation": {
+          "title": "entity",
+          "entity": "entity",
+          "type": "1-n",
+          "filter": {
+            "combinator": "and",
+            "rules": [],
+            "id": "d07cf43f-84ce-4583-a6a9-475b5d8dff5a"
+          }
+        },
+        "filter": true,
+        "refValue": "collection_name"
+      },
+      "data": {
+        "title": "Context Data",
+        "type": "array",
+        "description": "Danh sách query entities để nạp context, kết quả lưu theo alias",
+        "items": {
+          "type": "object",
+          "properties": {
+            "entity": {
+              "title": "Entity",
+              "type": "string",
+              "widget": "shortAnswer"
+            },
+            "condtion": {
+              "title": "Condition",
+              "type": "string",
+              "widget": "textarea"
+            },
+            "alias": {
+              "title": "Alias",
+              "type": "string",
+              "widget": "shortAnswer"
+            }
+          },
+          "dependencies": {},
+          "required": []
+        }
+      },
+      "condition_context": {
+        "type": "object",
+        "widget": "condition",
+        "title": "Condition Context",
+        "typeUI": "validate"
+      },
+      "condtion_body": {
+        "title": "Condition Body",
+        "type": "string",
+        "widget": "textarea",
+        "customRole": "textarea"
+      },
+      "code_context": {
+        "title": "Code Context",
+        "type": "string",
+        "widget": "relation",
+        "typeRelation": {
+          "_id": "code",
+          "title": "code",
+          "type": "1-1",
+          "filter": {
+            "combinator": "and",
+            "rules": []
+          }
+        },
+        "refValue": "function"
+      },
+      "condition": {
+        "title": "Condition Filter",
+        "type": "string",
+        "widget": "textarea",
+        "customRole": "textarea"
+      },
+      "type": {
+        "title": "Type",
+        "type": "string",
+        "widget": "select",
+        "choices": [
+          {
+            "key": "Global",
+            "value": "global"
+          },
+          {
+            "key": "Local",
+            "value": "local"
+          }
+        ],
+        "default": "local",
+        "filter": true
+      },
+      "resource": {
+        "type": "string",
+        "widget": "relation",
+        "typeRelation": {
+          "_id": "resource",
+          "title": "resource",
+          "type": "1-n",
+          "filter": {
+            "combinator": "and",
+            "rules": [],
+            "id": "4a7c49fa-cb54-4e78-a7d2-21fdcb00d0fd"
+          }
+        },
+        "filter": true,
+        "title": "Resource",
+        "typeSelect": "multiple",
+        "refValue": "slug"
+      },
+      "role": {
+        "type": "string",
+        "typeRelation": {
+          "_id": "role",
+          "title": "role",
+          "type": "1-n",
+          "filter": {
+            "combinator": "and",
+            "rules": [],
+            "id": "dffa9260-3673-4e43-8a16-f7dfa4ed802d"
+          }
+        },
+        "widget": "relation",
+        "typeSelect": "multiple",
+        "title": "Role",
+        "filter": true,
+        "refValue": "slug"
+      },
+      "action": {
+        "type": "string",
+        "typeRelation": {
+          "_id": "action",
+          "title": "action",
+          "type": "1-n",
+          "filter": {
+            "combinator": "and",
+            "rules": [],
+            "id": "221c5694-bd8b-4fdf-930c-30cc1f13f897"
+          }
+        },
+        "widget": "relation",
+        "typeSelect": "multiple",
+        "title": "Action",
+        "refValue": "slug"
+      },
+      "code": {
+        "title": "Code",
+        "type": "string",
+        "widget": "relation",
+        "typeRelation": {
+          "_id": "code",
+          "title": "code",
+          "type": "1-1",
+          "filter": {
+            "combinator": "and",
+            "rules": [],
+            "id": "df54441a-9a87-4e5c-88c3-f471838458dc"
+          }
+        },
+        "refValue": "function"
+      },
+      "piority": {
+        "title": "Piority",
+        "type": "string",
+        "widget": "numberInput",
+        "min": {
+          "target": {
+            "value": -1
+          }
+        },
+        "max": {
+          "target": {
+            "value": -1
+          }
+        }
+      },
+      "form": {
+        "title": "Form Setting",
+        "type": "string",
+        "widget": "relation",
+        "typeRelation": {
+          "_id": "form-setting",
+          "title": "form-setting",
+          "type": "1-1",
+          "filter": {
+            "combinator": "and",
+            "rules": []
+          }
+        },
+        "refValue": "slug"
+      },
+      "scope": {
+        "title": "Scope",
+        "type": "string",
+        "widget": "select",
+        "choices": [
+          {
+            "key": "Tất cả",
+            "value": ""
+          },
+          {
+            "key": "Self (chỉ dữ liệu do user tạo)",
+            "value": "self"
+          },
+          {
+            "key": "Custom",
+            "value": "custom"
+          }
+        ],
+        "filter": true
+      }
+    },
+    "dependencies": {},
+    "required": [
+      "title",
+      "slug",
+      "resource",
+      "role",
+      "action"
+    ]
+  },
+  "ui_schema": {
+    "title": {
+      "ui:widget": "shortAnswer"
+    },
+    "slug": {
+      "ui:widget": "UriKeyGen"
+    },
+    "root_entity": {
+      "ui:widget": "relation"
+    },
+    "data": {
+      "ui:widget": "textarea"
+    },
+    "condition_context": {
+      "ui:widget": "condition"
+    },
+    "condtion_body": {
+      "ui:widget": "textarea"
+    },
+    "code_context": {
+      "ui:widget": "relation"
+    },
+    "condition": {
+      "ui:widget": "textarea"
+    },
+    "type": {
+      "ui:widget": "select"
+    },
+    "resource": {
+      "ui:widget": "relation"
+    },
+    "role": {
+      "ui:widget": "relation"
+    },
+    "action": {
+      "ui:widget": "relation"
+    },
+    "code": {
+      "ui:widget": "relation"
+    },
+    "piority": {
+      "ui:widget": "numberInput"
+    },
+    "form": {
+      "ui:widget": "relation"
+    },
+    "scope": {
+      "ui:widget": "select"
+    },
+    "ui:order": [
+      "title",
+      "slug",
+      "root_entity",
+      "data",
+      "condition_context",
+      "condtion_body",
+      "code_context",
+      "condition",
+      "type",
+      "resource",
+      "role",
+      "action",
+      "code",
+      "piority",
+      "form",
+      "scope"
+    ]
+  },
+  "languages": [],
+  "entity_setting": {},
+  "customTabsList": [],
+  "reason": null
+}

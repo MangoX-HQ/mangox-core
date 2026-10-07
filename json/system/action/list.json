@@ -1,0 +1,12 @@
+{
+  "title": "List",
+  "slug": "list",
+  "method": "GET",
+  "path": "/",
+  "auth": true,
+  "type": "internal",
+  "header": "",
+  "body": "",
+  "locale": "vi",
+  "tenant_id": null
+}

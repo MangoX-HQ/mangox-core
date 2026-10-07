@@ -1,0 +1,23 @@
+{
+  "title": "policy role admin",
+  "slug": "policy-role-admin",
+  "resource": [
+    "role"
+  ],
+  "action": [
+    "list",
+    "delete",
+    "update",
+    "create",
+    "read"
+  ],
+  "role": [
+    "admin"
+  ],
+  "root_entity": [
+    "role"
+  ],
+  "condition": "select=",
+  "data": "",
+  "type": "local"
+}

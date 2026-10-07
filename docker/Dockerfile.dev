@@ -1,0 +1,12 @@
+FROM registry.gitlab.com/mangoads/mangox-backend-api/node20-alpine:latest
+
+WORKDIR /app
+
+COPY package.json yarn.lock ./
+RUN yarn install --frozen-lockfile
+
+COPY . .
+RUN yarn build
+
+EXPOSE 5555
+CMD [ "node", "dist/index.js" ]

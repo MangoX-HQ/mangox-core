@@ -1,0 +1,428 @@
+{
+  "title": "Tenant",
+  "collection_name": "tenant",
+  "mongodb_save_data": "tenant",
+  "databaseType": "mongodb",
+  "public_entity": true,
+  "use_timestamp": false,
+  "use_slug": true,
+  "use_locale": false,
+  "use_block": false,
+  "use_posttype": false,
+  "use_parent": false,
+  "use_parent_delete_childs": false,
+  "use_sync_relationship_multiply_language": false,
+  "use_import": false,
+  "comment_mode": false,
+  "system": true,
+  "json_schema": {
+    "type": "object",
+    "required": [
+      "title",
+      "slug",
+      "type",
+      "team_id"
+    ],
+    "dependencies": {},
+    "properties": {
+      "title": {
+        "title": "Title",
+        "type": "string",
+        "widget": "shortAnswer",
+        "filter": true
+      },
+      "slug": {
+        "title": "Slug",
+        "type": "string",
+        "widget": "UriKeyGen",
+        "depend_field": "title",
+        "filter": true,
+        "description": "Tenant slug — unique trong team"
+      },
+      "team_id": {
+        "title": "Team",
+        "type": "string",
+        "typeRelation": {
+          "_id": "team",
+          "title": "team",
+          "type": "1-1"
+        },
+        "widget": "relation",
+        "typeSelect": "single",
+        "filter": true,
+        "description": "Team chứa tenant. Tenant inherit Mongo/Redis/R2 config từ team."
+      },
+      "type": {
+        "title": "Type",
+        "type": "string",
+        "widget": "select",
+        "choices": [
+          {
+            "key": "public",
+            "value": "public"
+          },
+          {
+            "key": "private",
+            "value": "private"
+          }
+        ],
+        "default": "public",
+        "filter": true
+      },
+      "domain": {
+        "title": "Domain",
+        "type": "string",
+        "widget": "shortAnswer",
+        "description": "Domain riêng cho tenant (optional)"
+      },
+      "description": {
+        "title": "Description",
+        "type": "string",
+        "widget": "textarea"
+      },
+      "mongodb": {
+        "title": "MongoDB (override team)",
+        "type": "object",
+        "description": "Override MongoDB của team. Bỏ trống → inherit team.mongodb.",
+        "properties": {
+          "uri": {
+            "title": "Connection URI",
+            "type": "string",
+            "widget": "shortAnswer"
+          }
+        }
+      },
+      "r2": {
+        "title": "R2 / S3 (override team)",
+        "type": "object",
+        "description": "Override R2/S3 của team. Bỏ trống → inherit team.r2.",
+        "properties": {
+          "endpoint": {
+            "title": "Endpoint",
+            "type": "string",
+            "widget": "shortAnswer"
+          },
+          "region": {
+            "title": "Region",
+            "type": "string",
+            "widget": "shortAnswer"
+          },
+          "access_key": {
+            "title": "Access Key",
+            "type": "string",
+            "widget": "shortAnswer"
+          },
+          "secret_key": {
+            "title": "Secret Key",
+            "type": "string",
+            "widget": "shortAnswer"
+          },
+          "bucket": {
+            "title": "Bucket",
+            "type": "string",
+            "widget": "shortAnswer"
+          },
+          "public_url": {
+            "title": "Public URL",
+            "type": "string",
+            "widget": "shortAnswer"
+          }
+        }
+      },
+      "redis": {
+        "title": "Redis (override team)",
+        "type": "object",
+        "description": "Override Redis của team. Bỏ trống → inherit team.redis hoặc shared Studio Redis.",
+        "properties": {
+          "host": {
+            "title": "Host",
+            "type": "string",
+            "widget": "shortAnswer"
+          },
+          "port": {
+            "title": "Port",
+            "type": "integer",
+            "widget": "numberInput",
+            "default": 6379
+          },
+          "password": {
+            "title": "Password",
+            "type": "string",
+            "widget": "shortAnswer"
+          },
+          "db": {
+            "title": "DB Number",
+            "type": "integer",
+            "widget": "numberInput",
+            "default": 0
+          }
+        }
+      },
+      "runtime_status": {
+        "title": "Runtime Status",
+        "type": "string",
+        "widget": "select",
+        "choices": [
+          {
+            "key": "starting",
+            "value": "starting"
+          },
+          {
+            "key": "healthy",
+            "value": "healthy"
+          },
+          {
+            "key": "unhealthy",
+            "value": "unhealthy"
+          },
+          {
+            "key": "missing",
+            "value": "missing"
+          },
+          {
+            "key": "exited",
+            "value": "exited"
+          },
+          {
+            "key": "stopped",
+            "value": "stopped"
+          },
+          {
+            "key": "failed",
+            "value": "failed"
+          }
+        ],
+        "filter": true,
+        "readonly": true,
+        "description": "Container state — auto-update mỗi 30s"
+      },
+      "runtime_port": {
+        "title": "Runtime Port",
+        "type": "number",
+        "widget": "shortAnswer",
+        "readonly": true,
+        "filter": true
+      },
+      "runtime_url": {
+        "title": "Runtime URL",
+        "type": "string",
+        "widget": "shortAnswer",
+        "readonly": true,
+        "description": "URL frontend gọi tenant runtime"
+      },
+      "runtime_container_id": {
+        "title": "Container ID",
+        "type": "string",
+        "widget": "shortAnswer",
+        "readonly": true
+      },
+      "runtime_started_at": {
+        "title": "Started At",
+        "type": "string",
+        "widget": "datetime",
+        "readonly": true
+      },
+      "runtime_checked_at": {
+        "title": "Last Checked",
+        "type": "string",
+        "widget": "datetime",
+        "readonly": true
+      },
+      "seeded_user_count": {
+        "title": "Seeded Users",
+        "type": "number",
+        "widget": "shortAnswer",
+        "readonly": true
+      },
+      "seeded_at": {
+        "title": "Seeded At",
+        "type": "string",
+        "widget": "datetime",
+        "readonly": true
+      },
+      "image_compress": {
+        "title": "Nén ảnh (Image compress)",
+        "type": "object",
+        "description": "Cấu hình nén ảnh do STUDIO xử lý. Dùng chung R2 của team, ảnh nén lưu ở path <slug>-compress trong bucket team.",
+        "properties": {
+          "mode": {
+            "title": "Chế độ",
+            "type": "string",
+            "widget": "select",
+            "enum": [
+              "none",
+              "studio"
+            ],
+            "default": "none",
+            "description": "studio = Studio nén hộ (R2 team + path <slug>-compress). none = không nén (job vẫn đẩy vào queue nhưng worker skip)."
+          },
+          "sizes": {
+            "title": "Kích thước (width px)",
+            "type": "string",
+            "widget": "shortAnswer",
+            "default": "200,480,640,768,1024,1280,1536,1920,2048",
+            "description": "Danh sách width sinh ra, cách nhau bằng dấu phẩy."
+          },
+          "webp_quality": {
+            "title": "Chất lượng WebP",
+            "type": "number",
+            "widget": "numberInput",
+            "default": 80,
+            "minimum": 1,
+            "maximum": 100
+          },
+          "generate_thumb": {
+            "title": "Sinh thumbnail",
+            "type": "boolean",
+            "widget": "boolean",
+            "default": false
+          },
+          "thumb_size": {
+            "title": "Kích thước thumbnail (px)",
+            "type": "number",
+            "widget": "numberInput",
+            "default": 200
+          },
+          "regenerate_on_upload": {
+            "title": "Nén lại khi upload đè",
+            "type": "boolean",
+            "widget": "boolean",
+            "default": false
+          }
+        },
+        "required": [],
+        "dependencies": {}
+      }
+    }
+  },
+  "ui_schema": {
+    "title": {
+      "ui:widget": "shortAnswer"
+    },
+    "slug": {
+      "ui:widget": "UriKeyGen"
+    },
+    "team_id": {
+      "ui:widget": "relation"
+    },
+    "type": {
+      "ui:widget": "select"
+    },
+    "domain": {
+      "ui:widget": "shortAnswer"
+    },
+    "description": {
+      "ui:widget": "textarea"
+    },
+    "mongodb": {
+      "uri": {
+        "ui:widget": "shortAnswer"
+      },
+      "ui:order": [
+        "uri"
+      ]
+    },
+    "r2": {
+      "endpoint": {
+        "ui:widget": "shortAnswer"
+      },
+      "region": {
+        "ui:widget": "shortAnswer"
+      },
+      "access_key": {
+        "ui:widget": "shortAnswer"
+      },
+      "secret_key": {
+        "ui:widget": "shortAnswer",
+        "ui:options": {
+          "inputType": "password"
+        }
+      },
+      "bucket": {
+        "ui:widget": "shortAnswer"
+      },
+      "public_url": {
+        "ui:widget": "shortAnswer"
+      },
+      "ui:order": [
+        "endpoint",
+        "region",
+        "access_key",
+        "secret_key",
+        "bucket",
+        "public_url"
+      ]
+    },
+    "redis": {
+      "host": {
+        "ui:widget": "shortAnswer"
+      },
+      "port": {
+        "ui:widget": "numberInput"
+      },
+      "password": {
+        "ui:widget": "shortAnswer",
+        "ui:options": {
+          "inputType": "password"
+        }
+      },
+      "db": {
+        "ui:widget": "numberInput"
+      },
+      "ui:order": [
+        "host",
+        "port",
+        "password",
+        "db"
+      ]
+    },
+    "ui:order": [
+      "title",
+      "slug",
+      "team_id",
+      "type",
+      "domain",
+      "description",
+      "mongodb",
+      "r2",
+      "image_compress",
+      "redis",
+      "runtime_status",
+      "runtime_url",
+      "runtime_port",
+      "runtime_container_id",
+      "runtime_started_at",
+      "runtime_checked_at",
+      "seeded_user_count",
+      "seeded_at"
+    ],
+    "image_compress": {
+      "mode": {
+        "ui:widget": "select"
+      },
+      "sizes": {
+        "ui:widget": "shortAnswer"
+      },
+      "webp_quality": {
+        "ui:widget": "numberInput"
+      },
+      "generate_thumb": {
+        "ui:widget": "boolean"
+      },
+      "thumb_size": {
+        "ui:widget": "numberInput"
+      },
+      "regenerate_on_upload": {
+        "ui:widget": "boolean"
+      },
+      "ui:order": [
+        "mode",
+        "sizes",
+        "webp_quality",
+        "generate_thumb",
+        "thumb_size",
+        "regenerate_on_upload"
+      ]
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "title": "Category",
+  "slug": "category",
+  "entity": [
+    "category"
+  ],
+  "is_tenant": true,
+  "mongorest": "",
+  "action": [
+    "list",
+    "read",
+    "create",
+    "update",
+    "delete"
+  ],
+  "main": true
+}

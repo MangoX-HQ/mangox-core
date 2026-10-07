@@ -1,0 +1,109 @@
+{
+  "title": "SEO Path",
+  "databaseType": "mongodb",
+  "collection_name": "seopath",
+  "mongodb_save_data": "seopath",
+  "use_parent_delete_childs": false,
+  "use_sync_relationship_multiply_language": false,
+  "use_locale": false,
+  "use_block": false,
+  "use_timestamp": false,
+  "use_import": false,
+  "comment_mode": false,
+  "use_slug": false,
+  "public_entity": false,
+  "json_schema": {
+    "type": "object",
+    "properties": {
+      "slug": {
+        "title": "Slug",
+        "type": "string",
+        "widget": "shortAnswer",
+        "filter": true
+      },
+      "entity_slug": {
+        "items": {
+          "type": "object"
+        },
+        "title": "Entity Slug",
+        "type": "array",
+        "filter": true
+      },
+      "entity_save_data": {
+        "title": "Physical Collection",
+        "type": "string",
+        "widget": "shortAnswer",
+        "filter": true
+      },
+      "redirect_url": {
+        "title": "Redirect URL",
+        "type": "string",
+        "widget": "shortAnswer",
+        "filter": true
+      },
+      "locale": {
+        "title": "Locale",
+        "type": "string",
+        "widget": "shortAnswer",
+        "filter": true
+      },
+      "locale_id": {
+        "title": "Locale ID",
+        "type": "string",
+        "widget": "shortAnswer"
+      },
+      "related_id": {
+        "items": {
+          "type": "object"
+        },
+        "title": "Related IDs",
+        "type": "array",
+        "filter": true
+      },
+      "tenant_id": {
+        "title": "Tenant ID",
+        "type": "string",
+        "widget": "shortAnswer",
+        "filter": true
+      }
+    },
+    "dependencies": {},
+    "required": [
+      "slug"
+    ]
+  },
+  "ui_schema": {
+    "slug": {
+      "ui:widget": "shortAnswer"
+    },
+    "entity_save_data": {
+      "ui:widget": "shortAnswer"
+    },
+    "redirect_url": {
+      "ui:widget": "shortAnswer"
+    },
+    "locale": {
+      "ui:widget": "shortAnswer"
+    },
+    "locale_id": {
+      "ui:widget": "shortAnswer"
+    },
+    "tenant_id": {
+      "ui:widget": "shortAnswer"
+    },
+    "ui:order": [
+      "slug",
+      "entity_slug",
+      "entity_save_data",
+      "redirect_url",
+      "locale",
+      "locale_id",
+      "related_id",
+      "tenant_id"
+    ]
+  },
+  "languages": [],
+  "entity_setting": {},
+  "customTabsList": [],
+  "reason": null
+}

@@ -1,0 +1,27 @@
+{
+  "title": "policy comment admin",
+  "slug": "policy-comment-admin",
+  "resource": [
+    "comment"
+  ],
+  "action": [
+    "list",
+    "read",
+    "delete",
+    "update",
+    "create"
+  ],
+  "role": [
+    "admin"
+  ],
+  "root_entity": [
+    "comment"
+  ],
+  "condition": "select=*,created_by(username,full_name),updated_by(username,full_name),member(*),parent_id(*),status(*)",
+  "data": [],
+  "condition_context": null,
+  "condtion_body": "",
+  "code_context": "",
+  "code": "",
+  "piority": "0"
+}

@@ -1,0 +1,27 @@
+{
+  "title": "policy layout admin",
+  "slug": "policy-layout-admin",
+  "resource": [
+    "layout"
+  ],
+  "action": [
+    "list",
+    "read",
+    "delete",
+    "update",
+    "create"
+  ],
+  "role": [
+    "admin"
+  ],
+  "root_entity": [
+    "layout"
+  ],
+  "condition": "select=*,created_by,created_by(username,full_name),updated_by,updated_by(username,full_name),templates,templates(title)",
+  "data": [],
+  "condition_context": null,
+  "condtion_body": "",
+  "code_context": "",
+  "code": "",
+  "piority": "0"
+}

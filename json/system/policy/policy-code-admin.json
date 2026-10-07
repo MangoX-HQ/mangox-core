@@ -1,0 +1,23 @@
+{
+  "title": "Code admin full",
+  "slug": "policy-code-admin",
+  "resource": [
+    "code"
+  ],
+  "root_entity": [
+    "code"
+  ],
+  "role": [
+    "admin"
+  ],
+  "action": [
+    "list",
+    "read",
+    "create",
+    "update",
+    "delete"
+  ],
+  "condition": "select=",
+  "type": "local",
+  "system": true
+}

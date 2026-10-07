@@ -1,0 +1,336 @@
+{
+  "title": "Team",
+  "collection_name": "team",
+  "mongodb_save_data": "team",
+  "databaseType": "mongodb",
+  "public_entity": true,
+  "use_timestamp": false,
+  "use_slug": true,
+  "use_locale": false,
+  "use_block": false,
+  "use_posttype": false,
+  "use_parent": false,
+  "use_parent_delete_childs": false,
+  "use_sync_relationship_multiply_language": false,
+  "use_import": false,
+  "comment_mode": false,
+  "system": true,
+  "json_schema": {
+    "type": "object",
+    "required": [
+      "title",
+      "slug",
+      "mongodb",
+      "r2",
+      "redis"
+    ],
+    "dependencies": {},
+    "properties": {
+      "title": {
+        "title": "Title",
+        "type": "string",
+        "widget": "shortAnswer",
+        "filter": true
+      },
+      "slug": {
+        "title": "Slug",
+        "type": "string",
+        "widget": "UriKeyGen",
+        "depend_field": "title",
+        "filter": true,
+        "description": "Unique team slug"
+      },
+      "quota": {
+        "title": "Quota (defaults)",
+        "type": "object",
+        "description": "Default quota cho mọi tenant trong team. Tenant.quota_override có thể ghi đè.",
+        "properties": {
+          "max_tenants": {
+            "title": "Max Tenants",
+            "type": "integer",
+            "widget": "numberInput",
+            "default": 3,
+            "description": "-1 = unlimited"
+          },
+          "max_storage_mb": {
+            "title": "Max Storage (MB)",
+            "type": "integer",
+            "widget": "numberInput",
+            "default": 5000
+          },
+          "max_users": {
+            "title": "Max Users",
+            "type": "integer",
+            "widget": "numberInput",
+            "default": 10
+          }
+        },
+        "required": []
+      },
+      "plan": {
+        "title": "Plan",
+        "type": "string",
+        "widget": "select",
+        "choices": [
+          {
+            "key": "free",
+            "value": "free"
+          },
+          {
+            "key": "pro",
+            "value": "pro"
+          },
+          {
+            "key": "enterprise",
+            "value": "enterprise"
+          }
+        ],
+        "default": "free",
+        "filter": true
+      },
+      "description": {
+        "title": "Description",
+        "type": "string",
+        "widget": "textarea"
+      },
+      "mongodb": {
+        "title": "MongoDB",
+        "type": "object",
+        "description": "Cluster MongoDB cho team. Tenant DB sẽ tạo trong cluster này. Backend ping thử trước khi save.",
+        "required": [
+          "uri"
+        ],
+        "properties": {
+          "uri": {
+            "title": "Connection URI",
+            "type": "string",
+            "widget": "shortAnswer",
+            "description": "mongodb://user:pass@host:port/?options"
+          },
+          "db_prefix": {
+            "title": "DB prefix",
+            "type": "string",
+            "widget": "shortAnswer",
+            "description": "Tenant DB = <prefix>_<tenant_slug>. Bỏ trống dùng slug nguyên."
+          }
+        }
+      },
+      "r2": {
+        "title": "R2 / S3",
+        "type": "object",
+        "description": "Cloudflare R2 hoặc S3-compatible. 1 bucket / team, object path = <tenant_slug>/<file>.",
+        "required": [
+          "endpoint",
+          "access_key",
+          "secret_key",
+          "bucket"
+        ],
+        "properties": {
+          "endpoint": {
+            "title": "Endpoint",
+            "type": "string",
+            "widget": "shortAnswer",
+            "description": "https://<acct>.r2.cloudflarestorage.com"
+          },
+          "region": {
+            "title": "Region",
+            "type": "string",
+            "widget": "shortAnswer",
+            "default": "auto"
+          },
+          "access_key": {
+            "title": "Access Key",
+            "type": "string",
+            "widget": "shortAnswer"
+          },
+          "secret_key": {
+            "title": "Secret Key",
+            "type": "string",
+            "widget": "shortAnswer"
+          },
+          "bucket": {
+            "title": "Bucket Name",
+            "type": "string",
+            "widget": "shortAnswer"
+          },
+          "public_url": {
+            "title": "Public URL",
+            "type": "string",
+            "widget": "shortAnswer",
+            "description": "https://pub-xxx.r2.dev (optional cho file public)"
+          }
+        }
+      },
+      "redis": {
+        "title": "Redis",
+        "type": "object",
+        "description": "Redis cho team (BẮT BUỘC) — tenant runtime của team dùng Redis này, không dùng Redis Studio.",
+        "required": [
+          "host",
+          "port"
+        ],
+        "properties": {
+          "host": {
+            "title": "Host",
+            "type": "string",
+            "widget": "shortAnswer"
+          },
+          "port": {
+            "title": "Port",
+            "type": "integer",
+            "widget": "numberInput",
+            "default": 6379
+          },
+          "password": {
+            "title": "Password",
+            "type": "string",
+            "widget": "shortAnswer"
+          },
+          "db": {
+            "title": "DB Number",
+            "type": "integer",
+            "widget": "numberInput",
+            "default": 0
+          },
+          "tls": {
+            "title": "TLS",
+            "type": "boolean",
+            "widget": "boolean",
+            "appearance": "switch",
+            "default": false,
+            "description": "Bật khi Redis provider yêu cầu TLS (Upstash, Redis Cloud TLS endpoint)."
+          }
+        }
+      },
+      "owner_id": {
+        "title": "Owners",
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "typeRelation": {
+          "_id": "user",
+          "title": "user",
+          "type": "1-n"
+        },
+        "widget": "relation",
+        "typeSelect": "multiple",
+        "description": "User là team admin (full quyền team — không cần membership riêng)."
+      }
+    }
+  },
+  "ui_schema": {
+    "title": {
+      "ui:widget": "shortAnswer"
+    },
+    "slug": {
+      "ui:widget": "UriKeyGen"
+    },
+    "plan": {
+      "ui:widget": "select"
+    },
+    "description": {
+      "ui:widget": "textarea"
+    },
+    "quota": {
+      "max_tenants": {
+        "ui:widget": "numberInput"
+      },
+      "max_storage_mb": {
+        "ui:widget": "numberInput"
+      },
+      "max_users": {
+        "ui:widget": "numberInput"
+      },
+      "ui:order": [
+        "max_tenants",
+        "max_storage_mb",
+        "max_users"
+      ]
+    },
+    "mongodb": {
+      "uri": {
+        "ui:widget": "shortAnswer"
+      },
+      "db_prefix": {
+        "ui:widget": "shortAnswer"
+      },
+      "ui:order": [
+        "uri",
+        "db_prefix"
+      ]
+    },
+    "r2": {
+      "endpoint": {
+        "ui:widget": "shortAnswer"
+      },
+      "region": {
+        "ui:widget": "shortAnswer"
+      },
+      "access_key": {
+        "ui:widget": "shortAnswer"
+      },
+      "secret_key": {
+        "ui:widget": "shortAnswer",
+        "ui:options": {
+          "inputType": "password"
+        }
+      },
+      "bucket": {
+        "ui:widget": "shortAnswer"
+      },
+      "public_url": {
+        "ui:widget": "shortAnswer"
+      },
+      "ui:order": [
+        "endpoint",
+        "region",
+        "access_key",
+        "secret_key",
+        "bucket",
+        "public_url"
+      ]
+    },
+    "redis": {
+      "host": {
+        "ui:widget": "shortAnswer"
+      },
+      "port": {
+        "ui:widget": "numberInput"
+      },
+      "password": {
+        "ui:widget": "shortAnswer",
+        "ui:options": {
+          "inputType": "password"
+        }
+      },
+      "db": {
+        "ui:widget": "numberInput"
+      },
+      "tls": {
+        "ui:widget": "boolean"
+      },
+      "ui:order": [
+        "host",
+        "port",
+        "password",
+        "db",
+        "tls"
+      ]
+    },
+    "owner_id": {
+      "ui:widget": "relation"
+    },
+    "ui:order": [
+      "title",
+      "slug",
+      "plan",
+      "owner_id",
+      "mongodb",
+      "r2",
+      "redis",
+      "quota",
+      "description"
+    ]
+  }
+}

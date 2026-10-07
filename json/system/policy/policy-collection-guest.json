@@ -1,0 +1,20 @@
+{
+  "title": "policy collection guest",
+  "slug": "policy-collection-guest",
+  "resource": [
+    "collection"
+  ],
+  "action": [
+    "list",
+    "read"
+  ],
+  "role": [
+    "guest"
+  ],
+  "root_entity": [
+    "collection"
+  ],
+  "condition": "select=",
+  "data": "",
+  "type": "local"
+}

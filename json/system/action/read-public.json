@@ -1,0 +1,11 @@
+{
+  "title": "Read (public)",
+  "slug": "read-public",
+  "method": "GET",
+  "path": "/:id",
+  "auth": false,
+  "external": [],
+  "header": "",
+  "body": "",
+  "reason": null
+}

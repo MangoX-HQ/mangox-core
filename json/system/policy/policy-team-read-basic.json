@@ -1,0 +1,25 @@
+{
+  "title": "policy team read - basic fields (team user member)",
+  "slug": "policy-team-read-basic",
+  "description": "Team user member đọc team họ thuộc về — KHÔNG trả mongodb/r2/redis credentials. Setting setting-team-read dispatch tới policy này khi role_name='user'.",
+  "resource": ["team"],
+  "action": ["read"],
+  "role": ["team_admin", "team_manager", "team_user"],
+  "root_entity": ["team"],
+  "data": [
+    {
+      "entity": "user_team",
+      "condtion": "user_id=eq.@options:user_id&team_id=eq.@options:resource_id&is_active=neq.false",
+      "alias": "current_membership"
+    }
+  ],
+  "condition": "select=_id,title,slug,description,is_active,plan,quota,owner_id,created_at,updated_at&_id=in.@context:current_membership:data:team_id",
+  "condition_context": null,
+  "condtion_body": "",
+  "code_context": "",
+  "code": "",
+  "piority": "10",
+  "type": "local",
+  "system": true,
+  "is_active": true
+}

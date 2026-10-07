@@ -1,0 +1,15 @@
+{
+  "title": "Team",
+  "slug": "team",
+  "entity": [
+    "team"
+  ],
+  "action": [
+    "list",
+    "read",
+    "create",
+    "update",
+    "delete"
+  ],
+  "main": true
+}

@@ -1,0 +1,19 @@
+{
+  "sqltools.connections": [
+    {
+      "mysqlOptions": {
+        "authProtocol": "default",
+        "enableSsl": "Disabled"
+      },
+      "ssh": "Disabled",
+      "previewLimit": 50,
+      "server": "localhost",
+      "port": 10001,
+      "driver": "MySQL",
+      "name": "thaily",
+      "database": "thesis_management_system",
+      "username": "root",
+      "password": "Th@i2004"
+    }
+  ]
+}

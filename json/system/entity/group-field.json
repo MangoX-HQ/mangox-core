@@ -1,0 +1,209 @@
+{
+  "meta_data": {},
+  "title": "Group Field",
+  "mongodb_collection_name": "group-field",
+  "entity_group": [],
+  "unique_keys": "",
+  "use_parent": false,
+  "use_parent_delete_childs": false,
+  "use_locale": false,
+  "use_block": false,
+  "use_seo_path": false,
+  "json_schema": {
+    "type": "object",
+    "properties": {
+      "title": {
+        "title": "Title",
+        "type": "string",
+        "widget": "shortAnswer",
+        "filter": true
+      },
+      "slug": {
+        "widget": "UriKeyGen",
+        "title": "Slug",
+        "type": "string",
+        "filter": true
+      },
+      "featured_image": {
+        "title": "Featured Image",
+        "type": "string",
+        "widget": "file",
+        "filter": true
+      },
+      "folder": {
+        "title": "Folder",
+        "type": "string",
+        "widget": "relation",
+        "typeRelation": {
+          "title": "categories-block-image",
+          "_id": "categories-block-image",
+          "type": "n-1"
+        },
+        "filter": true
+      },
+      "tag": {
+        "title": "Tag",
+        "type": "string",
+        "widget": "relation",
+        "typeRelation": {
+          "title": "tags-group-field",
+          "_id": "tags-group-field",
+          "type": "n-1"
+        }
+      },
+      "sourceJSX": {
+        "type": "string",
+        "widget": "function",
+        "title": "Source JSX"
+      },
+      "isGenerated": {
+        "title": "Is Generated",
+        "type": "string",
+        "default": false,
+        "widget": "boolean"
+      },
+      "defaultData": {
+        "widget": "longAnswer",
+        "customRole": "textarea",
+        "title": "Default Data",
+        "type": "string"
+      },
+      "json_schema": {
+        "widget": "href",
+        "typeUrl": "url",
+        "title": "json_schema",
+        "type": "string",
+        "hidden": true
+      },
+      "ui_schema": {
+        "widget": "href",
+        "typeUrl": "url",
+        "title": "ui_schema",
+        "type": "string",
+        "hidden": true
+      },
+      "comments": {
+        "items": {
+          "type": "object",
+          "title": "Item",
+          "properties": {
+            "xpath": {
+              "type": "string",
+              "widget": "shortAnswer",
+              "title": "XPath"
+            },
+            "cssPath": {
+              "title": "CSS Path",
+              "type": "string",
+              "widget": "shortAnswer"
+            },
+            "comment": {
+              "widget": "longAnswer",
+              "customRole": "textarea",
+              "title": "Comment",
+              "type": "string"
+            }
+          },
+          "dependencies": {},
+          "required": []
+        },
+        "title": "Comments",
+        "type": "array"
+      },
+      "domain": {
+        "title": "domain",
+        "type": "string",
+        "widget": "shortAnswer"
+      }
+    },
+    "required": [
+      "title",
+      "slug"
+    ],
+    "dependencies": {}
+  },
+  "ui_schema": {
+    "title": {
+      "ui:widget": "shortAnswer"
+    },
+    "slug": {
+      "ui:widget": "UriKeyGen"
+    },
+    "featured_image": {
+      "ui:widget": "file"
+    },
+    "folder": {
+      "ui:widget": "relation"
+    },
+    "tag": {
+      "ui:widget": "relation"
+    },
+    "sourceJSX": {
+      "ui:widget": "function"
+    },
+    "isGenerated": {
+      "ui:widget": "boolean"
+    },
+    "defaultData": {
+      "ui:widget": "longAnswer"
+    },
+    "json_schema": {
+      "ui:widget": "href"
+    },
+    "ui_schema": {
+      "ui:widget": "href"
+    },
+    "comments": {
+      "items": {
+        "xpath": {
+          "ui:widget": "shortAnswer"
+        },
+        "cssPath": {
+          "ui:widget": "shortAnswer"
+        },
+        "comment": {
+          "ui:widget": "longAnswer"
+        },
+        "ui:order": [
+          "xpath",
+          "cssPath",
+          "comment"
+        ]
+      }
+    },
+    "domain": {
+      "ui:widget": "shortAnswer"
+    },
+    "ui:order": [
+      "title",
+      "slug",
+      "featured_image",
+      "folder",
+      "tag",
+      "sourceJSX",
+      "isGenerated",
+      "defaultData",
+      "json_schema",
+      "ui_schema",
+      "comments",
+      "domain"
+    ]
+  },
+  "settings": {},
+  "languages": [],
+  "entity_setting": {},
+  "public_entity": true,
+  "use_timestamp": false,
+  "use_approval_process": false,
+  "use_posttype": false,
+  "comment_mode": false,
+  "status": "1",
+  "use_slug": false,
+  "customTabsList": [],
+  "tenant_view": [],
+  "use_import": false,
+  "use_sync_relationship_multiply_language": false,
+  "databaseType": "mongodb",
+  "collection_name": "group-field",
+  "mongodb_save_data": "group-field"
+}

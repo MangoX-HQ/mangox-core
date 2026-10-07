@@ -1,0 +1,27 @@
+{
+  "title": "policy media editor",
+  "slug": "policy-media-editor",
+  "resource": [
+    "media"
+  ],
+  "action": [
+    "list",
+    "read",
+    "create",
+    "update",
+    "delete"
+  ],
+  "role": [
+    "writer",
+    "checker",
+    "publisher",
+    "editor",
+    "manager"
+  ],
+  "root_entity": [
+    "media"
+  ],
+  "condition": "select=",
+  "data": "",
+  "type": "local"
+}

@@ -1,0 +1,15 @@
+{
+  "title": "policy layout guest",
+  "slug": "policy-layout-guest",
+  "resource": ["layout"],
+  "action": ["list-public", "read-public"],
+  "role": ["guest"],
+  "root_entity": ["layout"],
+  "condition": "select=*,templates(_id,title,header,footer,sidebar,blocks,locale,locale_id,header(),footer(),sidebar()),created_by()",
+  "data": [],
+  "condition_context": null,
+  "condtion_body": "",
+  "code_context": "",
+  "code": "",
+  "piority": "0"
+}

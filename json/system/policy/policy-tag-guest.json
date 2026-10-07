@@ -1,0 +1,24 @@
+{
+  "title": "policy tag guest",
+  "slug": "policy-tag-guest",
+  "resource": [
+    "tag"
+  ],
+  "action": [
+    "list-public",
+    "read-public"
+  ],
+  "role": [
+    "guest"
+  ],
+  "root_entity": [
+    "tag"
+  ],
+  "condition": "select=*,tag_group,tag_group(title,slug)",
+  "data": [],
+  "condition_context": null,
+  "condtion_body": "",
+  "code_context": "",
+  "code": "",
+  "piority": "0"
+}

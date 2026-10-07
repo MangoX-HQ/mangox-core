@@ -1,0 +1,27 @@
+{
+  "title": "policy config-settings admin",
+  "slug": "policy-config-settings-admin",
+  "resource": [
+    "config-settings"
+  ],
+  "action": [
+    "list",
+    "read",
+    "delete",
+    "update",
+    "create"
+  ],
+  "role": [
+    "admin"
+  ],
+  "root_entity": [
+    "config-settings"
+  ],
+  "condition": "select=title,locale,mail.is_active,mail.host,mail.port,mail.secure,mail.user,mail.from,mail.from_name,created_by(username,full_name),updated_by(username,full_name)",
+  "data": [],
+  "condition_context": null,
+  "condtion_body": "",
+  "code_context": "",
+  "code": "",
+  "piority": "0"
+}

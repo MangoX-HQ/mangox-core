@@ -1,0 +1,131 @@
+{
+  "title": "Setting",
+  "databaseType": "mongodb",
+  "collection_name": "setting",
+  "mongodb_save_data": "setting",
+  "use_parent_delete_childs": false,
+  "use_sync_relationship_multiply_language": false,
+  "use_timestamp": false,
+  "use_import": false,
+  "comment_mode": false,
+  "use_slug": true,
+  "public_entity": false,
+  "entity_setting": {},
+  "customTabsList": [],
+  "json_schema": {
+    "type": "object",
+    "required": [
+      "title",
+      "slug"
+    ],
+    "properties": {
+      "title": {
+        "title": "Title",
+        "type": "string",
+        "widget": "shortAnswer",
+        "filter": true
+      },
+      "slug": {
+        "title": "Slug",
+        "type": "string",
+        "widget": "UriKeyGen",
+        "filter": true
+      },
+      "resource": {
+        "title": "Resource",
+        "type": "string",
+        "widget": "relation",
+        "typeSelect": "once",
+        "refValue": "slug",
+        "typeRelation": {
+          "title": "resource",
+          "entity": "resource"
+        },
+        "filter": true
+      },
+      "action": {
+        "title": "Action",
+        "type": "string",
+        "widget": "relation",
+        "typeSelect": "once",
+        "refValue": "slug",
+        "typeRelation": {
+          "title": "action",
+          "entity": "action"
+        },
+        "filter": true
+      },
+      "role": {
+        "title": "Role",
+        "type": "string",
+        "widget": "relation",
+        "typeSelect": "once",
+        "refValue": "slug",
+        "typeRelation": {
+          "title": "role",
+          "entity": "role"
+        },
+        "filter": true
+      },
+      "context_data_resource": {
+        "title": "Context Data Resource",
+        "type": "array",
+        "widget": "json",
+        "description": "Dữ liệu context cần nạp trước khi evaluate switch"
+      },
+      "switch": {
+        "title": "Switch",
+        "type": "string",
+        "widget": "shortAnswer",
+        "description": "Biểu thức / field path để evaluate (vd: membership.plan)"
+      },
+      "case": {
+        "title": "Case",
+        "type": "array",
+        "widget": "json",
+        "description": "Danh sách {value, policy} — map giá trị switch → policy slug"
+      }
+    }
+  },
+  "ui_schema": {
+    "title": {
+      "ui:widget": "shortAnswer"
+    },
+    "slug": {
+      "ui:widget": "UriKeyGen"
+    },
+    "resource": {
+      "ui:widget": "relation"
+    },
+    "action": {
+      "ui:widget": "relation"
+    },
+    "role": {
+      "ui:widget": "relation"
+    },
+    "context_data_resource": {
+      "ui:widget": "json"
+    },
+    "switch": {
+      "ui:widget": "shortAnswer"
+    },
+    "case": {
+      "ui:widget": "json"
+    },
+    "ui:order": [
+      "title",
+      "slug",
+      "resource",
+      "action",
+      "role",
+      "switch",
+      "context_data_resource",
+      "case"
+    ]
+  },
+  "use_locale": false,
+  "use_block": false,
+  "languages": [],
+  "reason": null,
+  "system": true
+}

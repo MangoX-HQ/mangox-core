@@ -1,0 +1,305 @@
+{
+  "title": "API Configuration",
+  "collection_name": "api-config",
+  "mongodb_save_data": "api-config",
+  "databaseType": "mongodb",
+  "use_timestamp": false,
+  "use_slug": true,
+  "use_locale": false,
+  "use_block": false,
+  "use_posttype": false,
+  "use_parent": false,
+  "use_parent_delete_childs": false,
+  "use_sync_relationship_multiply_language": false,
+  "use_import": false,
+  "comment_mode": false,
+  "public_entity": false,
+  "system": true,
+  "json_schema": {
+    "type": "object",
+    "required": [
+      "title",
+      "slug",
+      "base_url"
+    ],
+    "properties": {
+      "title": {
+        "title": "Title",
+        "type": "string",
+        "widget": "shortAnswer",
+        "filter": true
+      },
+      "slug": {
+        "title": "Slug",
+        "type": "string",
+        "widget": "UriKeyGen",
+        "depend_field": "title",
+        "filter": true,
+        "description": "Identifier để entity reference qua field api_config"
+      },
+      "base_url": {
+        "title": "Base URL",
+        "type": "string",
+        "widget": "shortAnswer",
+        "description": "VD: https://core-b.com/api/v1"
+      },
+      "auth": {
+        "title": "Authentication",
+        "type": "object",
+        "properties": {
+          "type": {
+            "title": "Auth Type",
+            "type": "string",
+            "widget": "select",
+            "choices": [
+              {
+                "key": "bearer",
+                "value": "bearer"
+              },
+              {
+                "key": "apikey",
+                "value": "apikey"
+              },
+              {
+                "key": "basic",
+                "value": "basic"
+              },
+              {
+                "key": "none",
+                "value": "none"
+              }
+            ],
+            "default": "bearer"
+          },
+          "token": {
+            "title": "Token",
+            "type": "string",
+            "widget": "password",
+            "description": "Bearer token hoặc API key value"
+          },
+          "username": {
+            "title": "Username",
+            "type": "string",
+            "widget": "shortAnswer",
+            "description": "Cho basic auth"
+          },
+          "password": {
+            "title": "Password",
+            "type": "string",
+            "widget": "password",
+            "description": "Cho basic auth"
+          },
+          "header_name": {
+            "title": "API Key Header",
+            "type": "string",
+            "widget": "shortAnswer",
+            "default": "X-API-Key",
+            "description": "Tên header cho apikey type"
+          }
+        }
+      },
+      "capabilities": {
+        "title": "API Capabilities",
+        "type": "object",
+        "description": "Khai báo features API hỗ trợ",
+        "properties": {
+          "filter": {
+            "title": "Filter",
+            "type": "boolean",
+            "widget": "boolean",
+            "default": true
+          },
+          "select": {
+            "title": "Select fields",
+            "type": "boolean",
+            "widget": "boolean",
+            "default": true
+          },
+          "sort": {
+            "title": "Sort",
+            "type": "boolean",
+            "widget": "boolean",
+            "default": true
+          },
+          "pagination": {
+            "title": "Pagination",
+            "type": "boolean",
+            "widget": "boolean",
+            "default": true
+          }
+        }
+      },
+      "endpoint_map": {
+        "title": "Endpoint Map (JSON)",
+        "type": "object",
+        "widget": "function",
+        "defaultLanguage": "json",
+        "description": "Map collection_name → API path. VD: {\"user\":\"users\",\"post\":\"v2/posts\"}"
+      },
+      "extra_headers": {
+        "title": "Extra Headers (JSON)",
+        "type": "object",
+        "widget": "function",
+        "defaultLanguage": "json",
+        "description": "Headers cố định gửi mọi request. VD: {\"X-Source\":\"core-a\"}"
+      },
+      "timeout": {
+        "title": "Timeout (ms)",
+        "type": "number",
+        "widget": "numberInput",
+        "default": 5000
+      },
+      "retries": {
+        "title": "Retry count",
+        "type": "number",
+        "widget": "numberInput",
+        "default": 1
+      },
+      "fallback": {
+        "title": "Fallback Strategy",
+        "type": "string",
+        "widget": "select",
+        "choices": [
+          {
+            "key": "fail",
+            "value": "fail"
+          },
+          {
+            "key": "empty",
+            "value": "empty"
+          }
+        ],
+        "default": "fail",
+        "description": "fail = throw error nếu API down, empty = trả [] thay vì throw"
+      },
+      "forward_user_token": {
+        "title": "Forward User Token",
+        "type": "boolean",
+        "widget": "boolean",
+        "default": false,
+        "description": "Forward JWT của user thật thay vì service token"
+      },
+      "response_type": {
+        "title": "Response Type",
+        "type": "string",
+        "widget": "select",
+        "choices": [
+          {
+            "key": "json",
+            "value": "json"
+          },
+          {
+            "key": "binary",
+            "value": "binary"
+          }
+        ],
+        "default": "json",
+        "description": "binary = auto-upload buffer lên MinIO + trả {url, media_id, size, mime}"
+      },
+      "request_template": {
+        "title": "Request Template (JSON)",
+        "type": "object",
+        "widget": "function",
+        "defaultLanguage": "json",
+        "description": "Override method/body/headers/query với placeholder @field/@context/@options. VD: {\"method\":\"POST\",\"body\":{\"html\":\"@context:html_template:html_content\"}}"
+      }
+    }
+  },
+  "ui_schema": {
+    "title": {
+      "ui:widget": "shortAnswer"
+    },
+    "slug": {
+      "ui:widget": "UriKeyGen"
+    },
+    "base_url": {
+      "ui:widget": "shortAnswer"
+    },
+    "auth": {
+      "type": {
+        "ui:widget": "select"
+      },
+      "token": {
+        "ui:widget": "password"
+      },
+      "username": {
+        "ui:widget": "shortAnswer"
+      },
+      "password": {
+        "ui:widget": "password"
+      },
+      "header_name": {
+        "ui:widget": "shortAnswer"
+      },
+      "ui:order": [
+        "type",
+        "token",
+        "username",
+        "password",
+        "header_name"
+      ]
+    },
+    "capabilities": {
+      "filter": {
+        "ui:widget": "boolean"
+      },
+      "select": {
+        "ui:widget": "boolean"
+      },
+      "sort": {
+        "ui:widget": "boolean"
+      },
+      "pagination": {
+        "ui:widget": "boolean"
+      },
+      "ui:order": [
+        "filter",
+        "select",
+        "sort",
+        "pagination"
+      ]
+    },
+    "endpoint_map": {
+      "ui:widget": "function"
+    },
+    "extra_headers": {
+      "ui:widget": "function"
+    },
+    "timeout": {
+      "ui:widget": "numberInput"
+    },
+    "retries": {
+      "ui:widget": "numberInput"
+    },
+    "fallback": {
+      "ui:widget": "select"
+    },
+    "forward_user_token": {
+      "ui:widget": "boolean"
+    },
+    "response_type": {
+      "ui:widget": "select"
+    },
+    "request_template": {
+      "ui:widget": "function"
+    },
+    "ui:order": [
+      "title",
+      "slug",
+      "base_url",
+      "auth",
+      "capabilities",
+      "endpoint_map",
+      "extra_headers",
+      "timeout",
+      "retries",
+      "fallback",
+      "forward_user_token",
+      "response_type",
+      "request_template"
+    ]
+  },
+  "entity_setting": {},
+  "customTabsList": [],
+  "reason": null
+}

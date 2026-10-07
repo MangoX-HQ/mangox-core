@@ -1,0 +1,27 @@
+{
+  "title": "policy menu admin",
+  "slug": "policy-menu-admin",
+  "resource": [
+    "menu"
+  ],
+  "action": [
+    "list",
+    "read",
+    "delete",
+    "update",
+    "create"
+  ],
+  "role": [
+    "admin"
+  ],
+  "root_entity": [
+    "menu"
+  ],
+  "condition": "select=*,created_by(username,full_name),updated_by(username,full_name),groupfield()",
+  "data": [],
+  "condition_context": null,
+  "condtion_body": "",
+  "code_context": "",
+  "code": "",
+  "piority": "0"
+}

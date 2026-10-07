@@ -1,0 +1,17 @@
+{
+  "title": "tag",
+  "slug": "tag",
+  "entity": [
+    "tag"
+  ],
+  "is_tenant": true,
+  "mongorest": "",
+  "action": [
+    "list",
+    "read",
+    "create",
+    "update",
+    "delete"
+  ],
+  "main": true
+}

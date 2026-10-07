@@ -1,0 +1,30 @@
+{
+  "title": "policy tenant read - full (admin/manager team-of-tenant)",
+  "slug": "policy-tenant-read-full",
+  "description": "Team admin/manager đọc tenant thuộc team họ quản lý — trả full field bao gồm mongodb/r2/redis override credentials.",
+  "resource": ["tenant"],
+  "action": ["read"],
+  "role": ["team_admin", "team_manager", "team_user"],
+  "root_entity": ["tenant"],
+  "data": [
+    {
+      "entity": "tenant",
+      "condtion": "_id=eq.@options:resource_id&select=team_id",
+      "alias": "current_tenant"
+    },
+    {
+      "entity": "user_team",
+      "condtion": "user_id=eq.@options:user_id&team_id=in.@context:current_tenant:data:team_id&is_active=neq.false",
+      "alias": "membership"
+    }
+  ],
+  "condition": "select=*,team_id(title,slug),created_by(username,full_name,email),updated_by(username,full_name,email)&team_id=in.@context:current_tenant:data:team_id",
+  "condition_context": null,
+  "condtion_body": "",
+  "code_context": "",
+  "code": "",
+  "piority": "10",
+  "type": "local",
+  "system": true,
+  "is_active": true
+}

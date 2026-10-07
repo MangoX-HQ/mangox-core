@@ -1,0 +1,12 @@
+{
+  "title": "Approve",
+  "slug": "approve",
+  "method": "PATCH",
+  "path": "/:id/approve",
+  "auth": true,
+  "type": "internal",
+  "header": "",
+  "body": "",
+  "locale": "vi",
+  "tenant_id": null
+}

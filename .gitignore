@@ -1,0 +1,23 @@
+node_modules/
+dist/
+logs/
+generator/
+**/node_modules/
+**/logs/
+**/.next/
+.vercel
+.prettierrc
+.claude/
+claude/
+**swagger**.env
+.env
+# --- import cleanup: runtime/test artifacts ---
+tmp/
+data/*.sqlite*
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
+_log*.json
+log.json
+*.zip
+dependency-graph.svg

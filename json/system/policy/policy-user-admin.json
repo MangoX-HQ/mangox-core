@@ -1,0 +1,24 @@
+{
+  "title": "policy user admin",
+  "slug": "policy-user-admin",
+  "resource": [
+    "user"
+  ],
+  "action": [
+    "list",
+    "read",
+    "create",
+    "update",
+    "delete"
+  ],
+  "role": [
+    "admin"
+  ],
+  "root_entity": [
+    "user"
+  ],
+  "condition": "select=",
+  "data": "",
+  "type": "local",
+  "system": true
+}

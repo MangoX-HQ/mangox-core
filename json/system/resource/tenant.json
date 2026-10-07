@@ -1,0 +1,15 @@
+{
+  "title": "Tenant",
+  "slug": "tenant",
+  "entity": [
+    "tenant"
+  ],
+  "action": [
+    "list",
+    "read",
+    "create",
+    "update",
+    "delete"
+  ],
+  "main": true
+}

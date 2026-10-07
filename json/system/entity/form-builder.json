@@ -1,0 +1,161 @@
+{
+  "title": "Form Builder",
+  "mongodb_collection_name": "form-builder",
+  "use_form_builder": true,
+  "json_schema": {
+    "type": "object",
+    "expanded": true,
+    "required": [
+      "title"
+    ],
+    "properties": {
+      "title": {
+        "title": "Title",
+        "type": "string",
+        "description": "Nhập thông tin tiêu đề",
+        "widget": "shortAnswer",
+        "expanded": true,
+        "require": true,
+        "filter": true
+      },
+      "redirect": {
+        "title": "Redirect",
+        "type": "string",
+        "widget": "shortAnswer",
+        "expanded": true,
+        "require": false,
+        "description": "Redirect đến url sau khi submit thành công",
+        "filter": true
+      },
+      "mongodb_collection_name": {
+        "widget": "UriKeyGen",
+        "title": "Mongodb Collection Name",
+        "type": "string",
+        "depend_field": "root_title",
+        "filter": false,
+        "hidden": true
+      },
+      "entity_save_data": {
+        "widget": "shortAnswer",
+        "title": "Entity Save Data",
+        "type": "string",
+        "filter": false,
+        "default": "form-builder-content",
+        "hidden": true
+      },
+      "template_mail": {
+        "title": "Template Mail",
+        "type": "string",
+        "widget": "relation",
+        "expanded": true,
+        "require": false,
+        "typeRelation": {
+          "title": "template-mail",
+          "_id": "template-mail",
+          "type": "1-n",
+          "filter": {
+            "combinator": "and",
+            "rules": [],
+            "id": "33493117-0da7-41e9-a568-efcde3b42ff4"
+          }
+        },
+        "typeSelect": "once",
+        "description": "Chọn template mail",
+        "filter": true,
+        "refValue": "locale_id",
+        "refValueAdmin": "no_objectId"
+      },
+      "settings": {
+        "title": "Settings",
+        "type": "string",
+        "expanded": true,
+        "hidden": true
+      },
+      "json_schema": {
+        "title": "JSON",
+        "type": "string",
+        "widget": "href",
+        "hidden": true
+      },
+      "ui_schema": {
+        "title": "UI",
+        "type": "string",
+        "widget": "href",
+        "hidden": true
+      }
+    },
+    "dependencies": {}
+  },
+  "ui_schema": {
+    "title": {
+      "ui:widget": "shortAnswer"
+    },
+    "redirect": {
+      "ui:widget": "shortAnswer"
+    },
+    "mongodb_collection_name": {
+      "ui:widget": "UriKeyGen"
+    },
+    "entity_save_data": {
+      "ui:widget": "shortAnswer"
+    },
+    "template_mail": {
+      "ui:widget": "relation"
+    },
+    "json_schema": {
+      "ui:widget": "href"
+    },
+    "ui_schema": {
+      "ui:widget": "href"
+    },
+    "ui:order": [
+      "title",
+      "redirect",
+      "mongodb_collection_name",
+      "entity_save_data",
+      "template_mail",
+      "settings",
+      "json_schema",
+      "ui_schema"
+    ]
+  },
+  "languages": [
+    {
+      "locale": "vi",
+      "slug": "form-builder"
+    },
+    {
+      "locale": "en",
+      "slug": "form-builder"
+    }
+  ],
+  "use_locale": true,
+  "use_parent": false,
+  "use_parent_delete_childs": false,
+  "use_block": false,
+  "use_content_review": false,
+  "use_like": false,
+  "use_comment": false,
+  "use_save": false,
+  "use_seo_path": false,
+  "entity_group": [],
+  "__v": 0,
+  "entity_setting": {
+    "fe_list": "title,\nredirect,\nmongodb_collection_name,,\njson_schema,\nui_schema,\nlocale,\nlocale_id,\nslug,\nlanguages,\nmeta_data.slug,\nmeta_data.type,\nmeta_data.redirect_to,\nmeta_data.path"
+  },
+  "settings": {},
+  "unique_keys": "",
+  "use_pinned": false,
+  "public_entity": true,
+  "use_approval_process": false,
+  "use_timestamp": false,
+  "use_posttype": false,
+  "status": "1",
+  "use_slug": false,
+  "comment_mode": false,
+  "use_sync_relationship_multiply_language": true,
+  "tenant_view": [],
+  "databaseType": "mongodb",
+  "collection_name": "form-builder",
+  "mongodb_save_data": "form-builder"
+}

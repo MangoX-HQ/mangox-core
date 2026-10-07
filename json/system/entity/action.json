@@ -1,0 +1,165 @@
+{
+  "title": "Action",
+  "databaseType": "mongodb",
+  "collection_name": "action",
+  "mongodb_save_data": "action",
+  "use_parent_delete_childs": false,
+  "use_sync_relationship_multiply_language": false,
+  "use_timestamp": false,
+  "use_import": false,
+  "comment_mode": false,
+  "use_slug": false,
+  "public_entity": false,
+  "unique_keys": "",
+  "json_schema": {
+    "type": "object",
+    "properties": {
+      "title": {
+        "title": "Action Name",
+        "type": "string",
+        "widget": "shortAnswer",
+        "filter": true
+      },
+      "slug": {
+        "widget": "UriKeyGen",
+        "title": "Slug",
+        "type": "string",
+        "filter": true
+      },
+      "method": {
+        "widget": "select",
+        "returnValue": 2,
+        "choices": [
+          {
+            "key": "GET",
+            "value": "GET"
+          },
+          {
+            "key": "PUT",
+            "value": "PUT"
+          },
+          {
+            "key": "PATCH",
+            "value": "PATCH"
+          },
+          {
+            "key": "DELETE",
+            "value": "DELETE"
+          },
+          {
+            "key": "POST",
+            "value": "POST"
+          },
+          {
+            "key": "HEAD",
+            "value": "HEAD"
+          },
+          {
+            "key": "OPTIONS",
+            "value": "OPTIONS"
+          }
+        ],
+        "default": [],
+        "allowNull": false,
+        "isMultiple": false,
+        "title": "Method",
+        "type": "string",
+        "filter": true
+      },
+      "path": {
+        "type": "string",
+        "widget": "shortAnswer",
+        "title": "Path",
+        "filter": true
+      },
+      "auth": {
+        "title": "Auth",
+        "type": "boolean",
+        "default": false,
+        "widget": "boolean",
+        "filter": true
+      },
+      "external": {
+        "widget": "select",
+        "returnValue": 2,
+        "choices": [
+          {
+            "key": "external",
+            "value": "external"
+          },
+          {
+            "key": "internal",
+            "value": "internal"
+          }
+        ],
+        "default": [],
+        "allowNull": false,
+        "isMultiple": false,
+        "title": "Type",
+        "type": "string",
+        "filter": true
+      },
+      "header": {
+        "type": "string",
+        "widget": "function",
+        "title": "Header",
+        "defaultLanguage": "json"
+      },
+      "body": {
+        "type": "string",
+        "widget": "function",
+        "title": "Body",
+        "defaultLanguage": "json"
+      }
+    },
+    "dependencies": {},
+    "required": [
+      "title",
+      "slug",
+      "method"
+    ]
+  },
+  "ui_schema": {
+    "title": {
+      "ui:widget": "shortAnswer"
+    },
+    "slug": {
+      "ui:widget": "UriKeyGen"
+    },
+    "method": {
+      "ui:widget": "select"
+    },
+    "path": {
+      "ui:widget": "shortAnswer"
+    },
+    "auth": {
+      "ui:widget": "boolean"
+    },
+    "external": {
+      "ui:widget": "select"
+    },
+    "header": {
+      "ui:widget": "function"
+    },
+    "body": {
+      "ui:widget": "function"
+    },
+    "ui:order": [
+      "title",
+      "slug",
+      "method",
+      "path",
+      "auth",
+      "external",
+      "header",
+      "body"
+    ]
+  },
+  "entity_setting": {},
+  "customTabsList": [],
+  "reason": null,
+  "use_locale": false,
+  "use_block": false,
+  "languages": [],
+  "system": true
+}

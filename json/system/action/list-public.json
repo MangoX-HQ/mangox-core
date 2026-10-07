@@ -1,0 +1,12 @@
+{
+  "title": "List (public)",
+  "slug": "list-public",
+  "method": "GET",
+  "path": "/",
+  "auth": false,
+  "type": "internal",
+  "header": "",
+  "body": "",
+  "locale": "vi",
+  "tenant_id": null
+}

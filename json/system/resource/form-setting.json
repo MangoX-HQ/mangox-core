@@ -1,0 +1,15 @@
+{
+  "title": "Form Setting",
+  "slug": "form-setting",
+  "entity": [
+    "form-setting"
+  ],
+  "action": [
+    "list",
+    "read",
+    "create",
+    "update",
+    "delete"
+  ],
+  "main": true
+}

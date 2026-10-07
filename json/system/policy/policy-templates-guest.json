@@ -1,0 +1,15 @@
+{
+  "title": "policy templates guest",
+  "slug": "policy-templates-guest",
+  "resource": ["templates"],
+  "action": ["list-public", "read-public"],
+  "role": ["guest"],
+  "root_entity": ["templates"],
+  "condition": "select=*,header(title),footer(title),sidebar(title)",
+  "data": [],
+  "condition_context": null,
+  "condtion_body": "",
+  "code_context": "",
+  "code": "",
+  "piority": "0"
+}

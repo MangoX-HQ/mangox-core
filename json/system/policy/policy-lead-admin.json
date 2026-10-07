@@ -1,0 +1,15 @@
+{
+  "title": "policy lead admin",
+  "slug": "policy-lead-admin",
+  "resource": ["lead"],
+  "action": ["list", "read", "delete", "update", "create"],
+  "role": ["admin"],
+  "root_entity": ["lead"],
+  "condition": "select=*,assigned_to(username,full_name),created_by(username,full_name),updated_by(username,full_name)",
+  "data": [],
+  "condition_context": null,
+  "condtion_body": "",
+  "code_context": "",
+  "code": "",
+  "piority": "0"
+}

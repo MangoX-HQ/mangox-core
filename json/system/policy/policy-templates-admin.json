@@ -1,0 +1,27 @@
+{
+  "title": "policy templates admin",
+  "slug": "policy-templates-admin",
+  "resource": [
+    "templates"
+  ],
+  "action": [
+    "list",
+    "read",
+    "delete",
+    "update",
+    "create"
+  ],
+  "role": [
+    "admin"
+  ],
+  "root_entity": [
+    "templates"
+  ],
+  "condition": "select=*,created_by(username,full_name),updated_by(username,full_name),header(title),footer(title),sidebar(title)",
+  "data": [],
+  "condition_context": null,
+  "condtion_body": "",
+  "code_context": "",
+  "code": "",
+  "piority": "0"
+}

@@ -1,0 +1,17 @@
+{
+  "title": "templates",
+  "slug": "templates",
+  "entity": [
+    "templates"
+  ],
+  "is_tenant": true,
+  "mongorest": "",
+  "action": [
+    "list",
+    "read",
+    "create",
+    "update",
+    "delete"
+  ],
+  "main": true
+}

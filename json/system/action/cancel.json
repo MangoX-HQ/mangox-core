@@ -1,0 +1,12 @@
+{
+  "title": "Cancel",
+  "slug": "cancel",
+  "method": "PATCH",
+  "path": "/:id/cancel",
+  "auth": true,
+  "type": "internal",
+  "header": "",
+  "body": "",
+  "locale": "vi",
+  "tenant_id": null
+}

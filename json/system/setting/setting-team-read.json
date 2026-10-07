@@ -1,0 +1,23 @@
+{
+  "title": "setting team read — dispatch policy theo role_name của caller trên team",
+  "slug": "setting-team-read",
+  "description": "GET /team/:id — load membership của (user_id, team_id từ URL path), switch role_name, dispatch tới policy-team-read-full (admin/manager) hoặc policy-team-read-basic (user).",
+  "resource": "team",
+  "action": "read",
+  "role": "team_admin",
+  "context_data_resource": [
+    {
+      "entity": "user_team",
+      "condtion": "user_id=eq.@options:user_id&team_id=eq.@options:resource_id&is_active=neq.false",
+      "alias": "membership"
+    }
+  ],
+  "switch": "membership:data:role_name",
+  "case": [
+    { "value": "admin", "policy": "policy-team-read-full" },
+    { "value": "manager", "policy": "policy-team-read-full" },
+    { "value": "user", "policy": "policy-team-read-basic" }
+  ],
+  "is_active": true,
+  "system": true
+}

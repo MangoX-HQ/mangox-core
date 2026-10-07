@@ -1,0 +1,17 @@
+{
+  "title": "Categories Block Image",
+  "slug": "categories-block-image",
+  "entity": [
+    "categories-block-image"
+  ],
+  "is_tenant": true,
+  "mongorest": "",
+  "action": [
+    "list",
+    "read",
+    "create",
+    "update",
+    "delete"
+  ],
+  "main": true
+}

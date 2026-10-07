@@ -1,0 +1,82 @@
+{
+  "title": "Role",
+  "collection_name": "role",
+  "mongodb_save_data": "role",
+  "use_locale": false,
+  "use_block": false,
+  "use_timestamp": false,
+  "public_entity": false,
+  "json_schema": {
+    "type": "object",
+    "properties": {
+      "title": {
+        "title": "Title",
+        "type": "string",
+        "widget": "shortAnswer",
+        "filter": true
+      },
+      "slug": {
+        "title": "Slug",
+        "type": "string",
+        "widget": "UriKeyGen",
+        "depend_field": "title",
+        "filter": true
+      },
+      "description": {
+        "title": "Description",
+        "type": "string",
+        "widget": "longAnswer"
+      },
+      "rule": {
+        "title": "Rule",
+        "type": "string",
+        "widget": "relation",
+        "typeRelation": {
+          "title": "rule",
+          "entity": "rule",
+          "type": "1-n"
+        },
+        "filter": true,
+        "typeSelect": "multiple",
+        "description": "Rule role nắm — lưu code",
+        "refValue": "code"
+      }
+    },
+    "dependencies": {},
+    "required": [
+      "title",
+      "slug"
+    ]
+  },
+  "ui_schema": {
+    "title": {
+      "ui:widget": "shortAnswer"
+    },
+    "slug": {
+      "ui:widget": "UriKeyGen"
+    },
+    "description": {
+      "ui:widget": "longAnswer"
+    },
+    "rule": {
+      "ui:widget": "relation"
+    },
+    "ui:order": [
+      "title",
+      "slug",
+      "description",
+      "rule"
+    ]
+  },
+  "languages": [],
+  "databaseType": "mongodb",
+  "use_parent_delete_childs": "false",
+  "use_sync_relationship_multiply_language": "false",
+  "use_import": false,
+  "comment_mode": false,
+  "use_slug": false,
+  "entity_setting": {},
+  "customTabsList": [],
+  "reason": null,
+  "system": true
+}

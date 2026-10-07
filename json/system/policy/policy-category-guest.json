@@ -1,0 +1,24 @@
+{
+  "title": "policy category guest",
+  "slug": "policy-category-guest",
+  "resource": [
+    "category"
+  ],
+  "action": [
+    "list-public",
+    "read-public"
+  ],
+  "role": [
+    "guest"
+  ],
+  "root_entity": [
+    "category"
+  ],
+  "condition": "select=*,parent_id,parent_id(title,slug),post_type",
+  "data": [],
+  "condition_context": null,
+  "condtion_body": "",
+  "code_context": "",
+  "code": "",
+  "piority": "0"
+}

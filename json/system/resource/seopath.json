@@ -1,0 +1,16 @@
+{
+  "title": "SEO Path",
+  "slug": "seopath",
+  "entity": [
+    "seopath"
+  ],
+  "is_tenant": true,
+  "action": [
+    "list",
+    "read",
+    "create",
+    "update",
+    "delete"
+  ],
+  "main": true
+}

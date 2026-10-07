@@ -1,0 +1,19 @@
+{
+  "title": "author",
+  "slug": "author",
+  "entity": [
+    "author"
+  ],
+  "is_tenant": true,
+  "mongorest": "",
+  "action": [
+    "list",
+    "read",
+    "create",
+    "update",
+    "delete",
+    "list-public",
+    "read-public"
+  ],
+  "main": true
+}

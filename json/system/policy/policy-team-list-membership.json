@@ -1,0 +1,33 @@
+{
+  "title": "policy team list - by user_team membership",
+  "slug": "policy-team-list-membership",
+  "resource": [
+    "team"
+  ],
+  "action": [
+    "list"
+  ],
+  "role": [
+    "team_admin",
+    "team_manager",
+    "team_user"
+  ],
+  "root_entity": [
+    "team"
+  ],
+  "data": [
+    {
+      "entity": "user_team",
+      "condtion": "user_id=eq.@options:user_id&is_active=neq.false",
+      "alias": "my_memberships"
+    }
+  ],
+  "condition": "select=_id,title,slug,description,is_active,plan,quota,owners,created_at,updated_at&_id=in.@context:my_memberships:data:team_id",
+  "condition_context": null,
+  "condtion_body": "",
+  "code_context": "",
+  "code": "",
+  "piority": "0",
+  "type": "local",
+  "system": true
+}

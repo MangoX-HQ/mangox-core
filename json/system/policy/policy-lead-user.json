@@ -1,0 +1,15 @@
+{
+  "title": "policy lead user",
+  "slug": "policy-lead-user",
+  "resource": ["lead"],
+  "action": ["list", "read", "update"],
+  "role": ["user"],
+  "root_entity": ["lead"],
+  "condition": "select=*,assigned_to(username,full_name)&assigned_to=eq.@options:user_id",
+  "data": [],
+  "condition_context": null,
+  "condtion_body": "",
+  "code_context": "",
+  "code": "",
+  "piority": "0"
+}

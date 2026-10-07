@@ -1,0 +1,183 @@
+{
+  "title": "User",
+  "databaseType": "mongodb",
+  "collection_name": "user",
+  "mongodb_save_data": "user",
+  "entity_group": [],
+  "use_parent": false,
+  "use_parent_delete_childs": false,
+  "use_sync_relationship_multiply_language": false,
+  "use_locale": false,
+  "use_block": false,
+  "use_seo_path": false,
+  "use_posttype": false,
+  "use_timestamp": false,
+  "use_import": false,
+  "comment_mode": false,
+  "use_slug": false,
+  "public_entity": false,
+  "unique_keys": "",
+  "json_schema": {
+    "type": "object",
+    "properties": {
+      "username": {
+        "type": "string",
+        "widget": "shortAnswer",
+        "filter": true,
+        "title": "Username",
+        "description": "Nhập thông tin user name"
+      },
+      "email": {
+        "title": "Email",
+        "type": "string",
+        "widget": "shortAnswer",
+        "filter": true,
+        "description": "Nhập email"
+      },
+      "first_name": {
+        "title": "First Name",
+        "type": "string",
+        "widget": "shortAnswer",
+        "filter": true,
+        "description": "Nhập first name"
+      },
+      "last_name": {
+        "type": "string",
+        "widget": "shortAnswer",
+        "filter": true,
+        "title": "Last Name",
+        "description": "Nhập last name"
+      },
+      "full_name": {
+        "title": "Full Name",
+        "type": "string",
+        "widget": "shortAnswer",
+        "filter": true,
+        "hidden": false,
+        "description": "Thông tin full name"
+      },
+      "featured_image": {
+        "type": "string",
+        "widget": "file",
+        "title": "Avatar",
+        "description": "Chọn avatar"
+      },
+      "cover": {
+        "title": "Cover",
+        "type": "string",
+        "widget": "file",
+        "filter": false,
+        "description": "Chọn hình cover"
+      },
+      "phone": {
+        "widget": "shortAnswer",
+        "title": "Phone",
+        "type": "string"
+      },
+      "password": {
+        "title": "Password",
+        "type": "string",
+        "widget": "shortAnswer",
+        "description": "Nhập mật khẩu"
+      },
+      "birthday": {
+        "title": "Birthday",
+        "type": "string",
+        "widget": "date",
+        "displayFormat": "YYYY/MM/DD",
+        "formatDate": "date",
+        "description": "Chọn ngày sinh"
+      },
+      "is_super_admin": {
+        "type": "boolean",
+        "widget": "boolean",
+        "appearance": "switch",
+        "default": false,
+        "title": "Super Admin",
+        "description": "Flag bypass mọi team/tenant check. Chỉ super_admin khác có thể set."
+      },
+      "role_name": {
+        "title": "Role Name",
+        "type": "string",
+        "widget": "shortAnswer",
+        "hidden": true
+      }
+    },
+    "required": [
+      "username",
+      "email"
+    ],
+    "dependencies": {}
+  },
+  "ui_schema": {
+    "username": {
+      "ui:widget": "shortAnswer"
+    },
+    "email": {
+      "ui:widget": "shortAnswer"
+    },
+    "first_name": {
+      "ui:widget": "shortAnswer"
+    },
+    "last_name": {
+      "ui:widget": "shortAnswer"
+    },
+    "full_name": {
+      "ui:widget": "shortAnswer"
+    },
+    "featured_image": {
+      "ui:widget": "file"
+    },
+    "cover": {
+      "ui:widget": "file"
+    },
+    "phone": {
+      "ui:widget": "shortAnswer"
+    },
+    "password": {
+      "ui:widget": "shortAnswer"
+    },
+    "birthday": {
+      "ui:widget": "date"
+    },
+    "is_super_admin": {
+      "ui:widget": "boolean"
+    },
+    "role": {
+      "ui:widget": "relation"
+    },
+    "role_name": {
+      "ui:widget": "shortAnswer"
+    },
+    "ui:order": [
+      "username",
+      "email",
+      "first_name",
+      "last_name",
+      "full_name",
+      "featured_image",
+      "cover",
+      "phone",
+      "password",
+      "birthday",
+      "is_super_admin",
+      "role",
+      "role_name"
+    ]
+  },
+  "settings": {},
+  "languages": [
+    {
+      "locale": "vi",
+      "slug": "user"
+    },
+    {
+      "locale": "en",
+      "slug": "user"
+    }
+  ],
+  "entity_setting": {},
+  "customTabsList": [],
+  "reason": null,
+  "system": true
+}

@@ -1,0 +1,15 @@
+{
+  "title": "User",
+  "slug": "user",
+  "entity": [
+    "user"
+  ],
+  "action": [
+    "list",
+    "read",
+    "create",
+    "update",
+    "delete"
+  ],
+  "main": true
+}

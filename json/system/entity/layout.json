@@ -1,0 +1,158 @@
+{
+  "meta_data": {},
+  "title": "Layout",
+  "mongodb_collection_name": "layout",
+  "entity_group": [],
+  "unique_keys": "",
+  "use_parent": false,
+  "use_parent_delete_childs": false,
+  "use_locale": true,
+  "use_block": true,
+  "use_seo_path": false,
+  "json_schema": {
+    "type": "object",
+    "expanded": true,
+    "properties": {
+      "title": {
+        "title": "Title",
+        "type": "string",
+        "description": "Nhập thông tin title",
+        "widget": "shortAnswer",
+        "expanded": true,
+        "require": false,
+        "filter": true
+      },
+      "slug": {
+        "title": "Slug",
+        "type": "string",
+        "widget": "UriKeyGen",
+        "expanded": true,
+        "require": false,
+        "filter": true
+      },
+      "type": {
+        "title": "Type",
+        "type": "string",
+        "widget": "select",
+        "choices": [
+          {
+            "key": "Detail",
+            "value": "detail"
+          },
+          {
+            "key": "Category",
+            "value": "category"
+          },
+          {
+            "key": "Entity",
+            "value": "entity"
+          },
+          {
+            "key": "Root",
+            "value": "root"
+          }
+        ],
+        "description": "Chọn build template cho trang detail hoặc trang categoy"
+      },
+      "entity": {
+        "title": "Entity",
+        "type": "string",
+        "description": "Chọn entity",
+        "widget": "relation",
+        "expanded": true,
+        "require": false,
+        "typeRelation": {
+          "_id": "entity",
+          "title": "entity",
+          "type": "1-n",
+          "filter": {
+            "combinator": "and",
+            "rules": [],
+            "id": "af5ddf67-b50e-4ee2-9274-bbf24a80a9b7"
+          }
+        },
+        "typeSelect": "multiple",
+        "filter": true
+      },
+      "templates": {
+        "title": "Templates",
+        "type": "string",
+        "widget": "relation",
+        "expanded": true,
+        "require": false,
+        "typeRelation": {
+          "title": "templates",
+          "_id": "templates",
+          "type": "1-n",
+          "filter": {
+            "combinator": "and",
+            "rules": [],
+            "id": "cb85b5b9-eb5f-481f-a27f-d6207d39b0ad"
+          }
+        },
+        "typeSelect": "multiple",
+        "filter": true,
+        "description": "Chọn template",
+        "refValue": "locale_id",
+        "refValueAdmin": "no_objectId"
+      }
+    },
+    "dependencies": {},
+    "required": [
+      "title",
+      "slug"
+    ]
+  },
+  "ui_schema": {
+    "title": {
+      "ui:widget": "shortAnswer"
+    },
+    "slug": {
+      "ui:widget": "UriKeyGen"
+    },
+    "type": {
+      "ui:widget": "select"
+    },
+    "entity": {
+      "ui:widget": "relation"
+    },
+    "templates": {
+      "ui:widget": "relation"
+    },
+    "ui:order": [
+      "title",
+      "slug",
+      "type",
+      "entity",
+      "templates"
+    ]
+  },
+  "settings": {},
+  "languages": [
+    {
+      "locale": "vi",
+      "slug": "layout"
+    },
+    {
+      "locale": "en",
+      "slug": "layout"
+    }
+  ],
+  "entity_setting": {
+    "fe_list": "title,\nslug,\ntype,\nentity(),\nentity.title,\nentity.mongodb_collection_name,\nentity.comment_mode,\ntemplates(header(),footer(),sidebar()),\ntemplates.title,\ntemplates.header.title,\ntemplates.header.data,\ntemplates.footer.title,\ntemplates.footer.data,\ntemplates.sidebar,\nlocale,\nlocale_id,\nblocks_position,\nlanguages,\nmeta_data.slug,\nmeta_data.type,\nmeta_data.redirect_to,\nmeta_data.path"
+  },
+  "use_approval_process": false,
+  "public_entity": true,
+  "use_timestamp": false,
+  "use_posttype": false,
+  "status": "1",
+  "comment_mode": false,
+  "use_slug": false,
+  "use_sync_relationship_multiply_language": true,
+  "customTabsList": [],
+  "tenant_view": [],
+  "use_import": false,
+  "databaseType": "mongodb",
+  "collection_name": "layout",
+  "mongodb_save_data": "layout"
+}

@@ -1,0 +1,23 @@
+{
+  "title": "policy cron-job admin",
+  "slug": "policy-cron-job-admin",
+  "resource": [
+    "cron-job"
+  ],
+  "action": [
+    "list",
+    "delete",
+    "update",
+    "create",
+    "read"
+  ],
+  "role": [
+    "admin"
+  ],
+  "root_entity": [
+    "cron-job"
+  ],
+  "condition": "select=",
+  "data": "",
+  "type": "local"
+}

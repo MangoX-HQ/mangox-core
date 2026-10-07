@@ -1,0 +1,16 @@
+{
+  "title": "policy api-config admin",
+  "slug": "policy-api-config-admin",
+  "resource": ["api-config"],
+  "action": ["list", "read", "create", "update", "delete"],
+  "mcp_actions": ["list"],
+  "role": ["admin"],
+  "root_entity": ["api-config"],
+  "condition": "select=*",
+  "data": [],
+  "condition_context": null,
+  "condtion_body": "",
+  "code_context": "",
+  "code": "",
+  "piority": "0"
+}

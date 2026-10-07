@@ -1,0 +1,15 @@
+{
+  "title": "User Team",
+  "slug": "user_team",
+  "entity": [
+    "user_team"
+  ],
+  "action": [
+    "list",
+    "read",
+    "create",
+    "update",
+    "delete"
+  ],
+  "main": true
+}

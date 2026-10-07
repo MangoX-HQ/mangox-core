@@ -1,0 +1,24 @@
+{
+  "title": "policy form-builder guest",
+  "slug": "policy-form-builder-guest",
+  "resource": [
+    "form-builder"
+  ],
+  "action": [
+    "list-public",
+    "read-public"
+  ],
+  "role": [
+    "guest"
+  ],
+  "root_entity": [
+    "form-builder"
+  ],
+  "condition": "select=*",
+  "data": [],
+  "condition_context": null,
+  "condtion_body": "",
+  "code_context": "",
+  "code": "",
+  "piority": "0"
+}

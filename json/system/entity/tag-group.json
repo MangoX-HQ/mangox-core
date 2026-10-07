@@ -1,0 +1,92 @@
+{
+  "title": "Tag Group",
+  "mongodb_collection_name": "tag-group",
+  "json_schema": {
+    "type": "object",
+    "properties": {
+      "title": {
+        "widget": "shortAnswer",
+        "title": "Title",
+        "type": "string",
+        "filter": true,
+        "description": "Nhập thông tin title"
+      },
+      "slug": {
+        "widget": "UriKeyGen",
+        "title": "Slug",
+        "type": "string",
+        "depend_field": "root_title",
+        "hidden": false,
+        "filter": true,
+        "description": "Nhập thông tin slug"
+      },
+      "locale_id": {
+        "widget": "shortAnswer",
+        "title": "Locale ID",
+        "type": "string",
+        "hidden": true,
+        "filter": true
+      }
+    },
+    "required": [
+      "title",
+      "slug"
+    ],
+    "dependencies": {}
+  },
+  "ui_schema": {
+    "title": {
+      "ui:widget": "shortAnswer"
+    },
+    "slug": {
+      "ui:widget": "UriKeyGen"
+    },
+    "locale_id": {
+      "ui:widget": "shortAnswer"
+    },
+    "ui:order": [
+      "title",
+      "slug",
+      "locale_id"
+    ]
+  },
+  "languages": [
+    {
+      "locale": "vi",
+      "slug": "tag-group"
+    },
+    {
+      "locale": "en",
+      "slug": "tag-group"
+    }
+  ],
+  "use_locale": true,
+  "use_parent": false,
+  "use_parent_delete_childs": false,
+  "use_block": false,
+  "use_content_review": false,
+  "use_like": false,
+  "use_comment": false,
+  "use_save": false,
+  "use_seo_path": true,
+  "entity_group": [],
+  "__v": 0,
+  "entity_setting": {},
+  "settings": {},
+  "unique_keys": "",
+  "public_entity": true,
+  "use_approval_process": false,
+  "use_timestamp": false,
+  "use_posttype": false,
+  "meta_data": {},
+  "use_slug": false,
+  "comment_mode": false,
+  "customTabsList": [],
+  "status": "1",
+  "use_import": false,
+  "use_sync_relationship_multiply_language": false,
+  "tenant_view": [],
+  "databaseType": "mongodb",
+  "collection_name": "tag-group",
+  "mongodb_save_data": "tag-group"
+}

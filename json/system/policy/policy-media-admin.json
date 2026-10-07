@@ -1,0 +1,23 @@
+{
+  "title": "policy media admin",
+  "slug": "policy-media-admin",
+  "resource": [
+    "media"
+  ],
+  "action": [
+    "list",
+    "read",
+    "create",
+    "update",
+    "delete"
+  ],
+  "role": [
+    "admin"
+  ],
+  "root_entity": [
+    "media"
+  ],
+  "condition": "select=",
+  "data": "",
+  "type": "local"
+}

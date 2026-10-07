@@ -1,0 +1,27 @@
+{
+  "title": "policy author admin",
+  "slug": "policy-author-admin",
+  "resource": [
+    "author"
+  ],
+  "action": [
+    "list",
+    "read",
+    "create",
+    "update",
+    "delete"
+  ],
+  "role": [
+    "admin"
+  ],
+  "root_entity": [
+    "author"
+  ],
+  "condition": "select=*,avatar(),created_by(username,full_name),updated_by(username,full_name)",
+  "data": [],
+  "condition_context": null,
+  "condtion_body": "",
+  "code_context": "",
+  "code": "",
+  "piority": "0"
+}

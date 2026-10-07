@@ -1,0 +1,595 @@
+[
+  {
+    "case": "Case 1: No joins",
+    "input": {
+      "params": {
+        "limit": "10"
+      },
+      "collection": "articles",
+      "rootDb": "mongodb"
+    },
+    "output": {
+      "root": {
+        "type": "read",
+        "collection": "articles",
+        "securityFilters": [],
+        "metadata": {
+          "timestamp": "2026-01-29T04:06:27.395Z",
+          "user": {
+            "user_id": "user-123",
+            "roles": [
+              "admin"
+            ]
+          },
+          "originalParams": {
+            "limit": "10"
+          },
+          "roles": [
+            "admin"
+          ],
+          "source": "rest-api",
+          "options": {
+            "databaseType": "mongodb"
+          }
+        },
+        "pagination": {
+          "limit": 10,
+          "offset": 0
+        },
+        "sort": [
+          {
+            "field": "created_at",
+            "direction": "desc"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "case": "Case 2: Same-db join (mongodb -> mongodb)",
+    "description": "comments stays nested because same db",
+    "input": {
+      "params": {
+        "select": "title,comments()"
+      },
+      "collection": "articles",
+      "rootDb": "mongodb"
+    },
+    "output": {
+      "root": {
+        "type": "read",
+        "collection": "articles",
+        "securityFilters": [],
+        "metadata": {
+          "timestamp": "2026-01-29T04:06:27.401Z",
+          "user": {
+            "user_id": "user-123",
+            "roles": [
+              "admin"
+            ]
+          },
+          "originalParams": {
+            "select": "title,comments()"
+          },
+          "roles": [
+            "admin"
+          ],
+          "source": "rest-api",
+          "options": {
+            "databaseType": "mongodb"
+          }
+        },
+        "select": {
+          "include": [
+            "title"
+          ]
+        },
+        "joins": [
+          {
+            "type": "one-to-many",
+            "target": "comments",
+            "alias": "comments",
+            "on": [
+              {
+                "local": "_id",
+                "foreign": "article_id",
+                "operator": "eq"
+              }
+            ],
+            "databaseType": "mongodb",
+            "select": {
+              "include": [],
+              "exclude": []
+            }
+          }
+        ],
+        "pagination": {
+          "limit": 20,
+          "offset": 0
+        },
+        "sort": [
+          {
+            "field": "created_at",
+            "direction": "desc"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "case": "Case 3: Cross-db join (mongodb -> postgresql)",
+    "description": "author extracted because postgresql != mongodb",
+    "input": {
+      "params": {
+        "select": "title,author()"
+      },
+      "collection": "articles",
+      "rootDb": "mongodb"
+    },
+    "output": {
+      "f554d2a4-ae5a-434d-a7b9-00dad7c2d69b@root": {
+        "collection": "users",
+        "type": "read",
+        "securityFilters": [],
+        "select": {
+          "include": [],
+          "exclude": []
+        },
+        "metadata": {
+          "parentKey": "root",
+          "localField": "author_id",
+          "foreignField": "_id",
+          "alias": "author",
+          "databaseType": "postgresql",
+          "joinType": "many-to-one"
+        }
+      },
+      "root": {
+        "type": "read",
+        "collection": "articles",
+        "securityFilters": [],
+        "metadata": {
+          "timestamp": "2026-01-29T04:06:27.468Z",
+          "user": {
+            "user_id": "user-123",
+            "roles": [
+              "admin"
+            ]
+          },
+          "originalParams": {
+            "select": "title,author()"
+          },
+          "roles": [
+            "admin"
+          ],
+          "source": "rest-api",
+          "options": {
+            "databaseType": "mongodb"
+          }
+        },
+        "select": {
+          "include": [
+            "title"
+          ]
+        },
+        "pagination": {
+          "limit": 20,
+          "offset": 0
+        },
+        "sort": [
+          {
+            "field": "created_at",
+            "direction": "desc"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "case": "Case 4: Nested cross-db (mongodb -> mongodb -> postgresql)",
+    "description": "comments nested (same db), user extracted (diff db)",
+    "input": {
+      "params": {
+        "select": "title,comments(user())"
+      },
+      "collection": "articles",
+      "rootDb": "mongodb"
+    },
+    "output": {
+      "b4ce50e2-4eb5-43fc-af3e-c9b8b12dfa60@root": {
+        "collection": "users",
+        "type": "read",
+        "securityFilters": [],
+        "select": {
+          "include": [],
+          "exclude": []
+        },
+        "metadata": {
+          "parentKey": "root.comments",
+          "localField": "user_id",
+          "foreignField": "_id",
+          "alias": "user",
+          "databaseType": "postgresql",
+          "joinType": "many-to-one"
+        }
+      },
+      "root": {
+        "type": "read",
+        "collection": "articles",
+        "securityFilters": [],
+        "metadata": {
+          "timestamp": "2026-01-29T04:06:27.475Z",
+          "user": {
+            "user_id": "user-123",
+            "roles": [
+              "admin"
+            ]
+          },
+          "originalParams": {
+            "select": "title,comments(user())"
+          },
+          "roles": [
+            "admin"
+          ],
+          "source": "rest-api",
+          "options": {
+            "databaseType": "mongodb"
+          }
+        },
+        "select": {
+          "include": [
+            "title"
+          ]
+        },
+        "joins": [
+          {
+            "type": "one-to-many",
+            "target": "comments",
+            "alias": "comments",
+            "on": [
+              {
+                "local": "_id",
+                "foreign": "article_id",
+                "operator": "eq"
+              }
+            ],
+            "databaseType": "mongodb",
+            "select": {
+              "include": [],
+              "exclude": []
+            }
+          }
+        ],
+        "pagination": {
+          "limit": 20,
+          "offset": 0
+        },
+        "sort": [
+          {
+            "field": "created_at",
+            "direction": "desc"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "case": "Case 5: Chain mongodb -> postgresql -> mongodb",
+    "description": "author extracted (postgresql), profile extracted (mongodb != postgresql)",
+    "input": {
+      "params": {
+        "select": "title,author(name,profile())"
+      },
+      "collection": "articles",
+      "rootDb": "mongodb"
+    },
+    "output": {
+      "f99162d9-e5cd-4d36-8776-87f72a726fde@0dfc8679-7ad8-4b8e-a291-ae5fe596cf85": {
+        "collection": "profiles",
+        "type": "read",
+        "securityFilters": [],
+        "select": {
+          "include": [],
+          "exclude": []
+        },
+        "metadata": {
+          "parentKey": "0dfc8679-7ad8-4b8e-a291-ae5fe596cf85@root",
+          "localField": "_id",
+          "foreignField": "user_id",
+          "alias": "profile",
+          "databaseType": "mongodb",
+          "joinType": "one-to-one"
+        }
+      },
+      "0dfc8679-7ad8-4b8e-a291-ae5fe596cf85@root": {
+        "collection": "users",
+        "type": "read",
+        "securityFilters": [],
+        "select": {
+          "include": [
+            "name"
+          ],
+          "exclude": []
+        },
+        "metadata": {
+          "parentKey": "root",
+          "localField": "author_id",
+          "foreignField": "_id",
+          "alias": "author",
+          "databaseType": "postgresql",
+          "joinType": "many-to-one"
+        }
+      },
+      "root": {
+        "type": "read",
+        "collection": "articles",
+        "securityFilters": [],
+        "metadata": {
+          "timestamp": "2026-01-29T04:06:27.480Z",
+          "user": {
+            "user_id": "user-123",
+            "roles": [
+              "admin"
+            ]
+          },
+          "originalParams": {
+            "select": "title,author(name,profile())"
+          },
+          "roles": [
+            "admin"
+          ],
+          "source": "rest-api",
+          "options": {
+            "databaseType": "mongodb"
+          }
+        },
+        "select": {
+          "include": [
+            "title"
+          ]
+        },
+        "pagination": {
+          "limit": 20,
+          "offset": 0
+        },
+        "sort": [
+          {
+            "field": "created_at",
+            "direction": "desc"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "case": "Case 6: Same-db nested in extracted parent",
+    "description": "author extracted (postgresql), department stays nested in author (both postgresql)",
+    "input": {
+      "params": {
+        "select": "title,author(name,department())"
+      },
+      "collection": "articles",
+      "rootDb": "mongodb"
+    },
+    "output": {
+      "9570a9b8-4c1a-44d9-959a-5a44096c57b0@root": {
+        "collection": "users",
+        "type": "read",
+        "securityFilters": [],
+        "select": {
+          "include": [
+            "name"
+          ],
+          "exclude": []
+        },
+        "joins": [
+          {
+            "type": "many-to-one",
+            "target": "departments",
+            "alias": "department",
+            "on": [
+              {
+                "local": "department_id",
+                "foreign": "_id",
+                "operator": "eq"
+              }
+            ],
+            "databaseType": "postgresql",
+            "select": {
+              "include": [],
+              "exclude": []
+            }
+          }
+        ],
+        "metadata": {
+          "parentKey": "root",
+          "localField": "author_id",
+          "foreignField": "_id",
+          "alias": "author",
+          "databaseType": "postgresql",
+          "joinType": "many-to-one"
+        }
+      },
+      "root": {
+        "type": "read",
+        "collection": "articles",
+        "securityFilters": [],
+        "metadata": {
+          "timestamp": "2026-01-29T04:06:27.486Z",
+          "user": {
+            "user_id": "user-123",
+            "roles": [
+              "admin"
+            ]
+          },
+          "originalParams": {
+            "select": "title,author(name,department())"
+          },
+          "roles": [
+            "admin"
+          ],
+          "source": "rest-api",
+          "options": {
+            "databaseType": "mongodb"
+          }
+        },
+        "select": {
+          "include": [
+            "title"
+          ]
+        },
+        "pagination": {
+          "limit": 20,
+          "offset": 0
+        },
+        "sort": [
+          {
+            "field": "created_at",
+            "direction": "desc"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "case": "Case 7: Complex - multiple relations",
+    "description": "author extracted, comments nested with user extracted, category nested with parent nested",
+    "input": {
+      "params": {
+        "select": "title,author(),comments(user()),category(parent())"
+      },
+      "collection": "articles",
+      "rootDb": "mongodb"
+    },
+    "output": {
+      "7ce6d8af-6f9b-45c5-8c48-016a7e390acb@root": {
+        "collection": "users",
+        "type": "read",
+        "securityFilters": [],
+        "select": {
+          "include": [],
+          "exclude": []
+        },
+        "metadata": {
+          "parentKey": "root",
+          "localField": "author_id",
+          "foreignField": "_id",
+          "alias": "author",
+          "databaseType": "postgresql",
+          "joinType": "many-to-one"
+        }
+      },
+      "02837f1e-a0dc-4279-bb74-63fae2a85bcd@root": {
+        "collection": "users",
+        "type": "read",
+        "securityFilters": [],
+        "select": {
+          "include": [],
+          "exclude": []
+        },
+        "metadata": {
+          "parentKey": "root.comments",
+          "localField": "user_id",
+          "foreignField": "_id",
+          "alias": "user",
+          "databaseType": "postgresql",
+          "joinType": "many-to-one"
+        }
+      },
+      "root": {
+        "type": "read",
+        "collection": "articles",
+        "securityFilters": [],
+        "metadata": {
+          "timestamp": "2026-01-29T04:06:27.491Z",
+          "user": {
+            "user_id": "user-123",
+            "roles": [
+              "admin"
+            ]
+          },
+          "originalParams": {
+            "select": "title,author(),comments(user()),category(parent())"
+          },
+          "roles": [
+            "admin"
+          ],
+          "source": "rest-api",
+          "options": {
+            "databaseType": "mongodb"
+          }
+        },
+        "select": {
+          "include": [
+            "title"
+          ]
+        },
+        "joins": [
+          {
+            "type": "one-to-many",
+            "target": "comments",
+            "alias": "comments",
+            "on": [
+              {
+                "local": "_id",
+                "foreign": "article_id",
+                "operator": "eq"
+              }
+            ],
+            "databaseType": "mongodb",
+            "select": {
+              "include": [],
+              "exclude": []
+            }
+          },
+          {
+            "type": "many-to-one",
+            "target": "categories",
+            "alias": "category",
+            "on": [
+              {
+                "local": "category_id",
+                "foreign": "_id",
+                "operator": "eq"
+              }
+            ],
+            "databaseType": "mongodb",
+            "select": {
+              "include": [],
+              "exclude": []
+            },
+            "joins": [
+              {
+                "type": "many-to-one",
+                "target": "categories",
+                "alias": "parent",
+                "on": [
+                  {
+                    "local": "parent_id",
+                    "foreign": "_id",
+                    "operator": "eq"
+                  }
+                ],
+                "databaseType": "mongodb",
+                "select": {
+                  "include": [],
+                  "exclude": []
+                }
+              }
+            ]
+          }
+        ],
+        "pagination": {
+          "limit": 20,
+          "offset": 0
+        },
+        "sort": [
+          {
+            "field": "created_at",
+            "direction": "desc"
+          }
+        ]
+      }
+    }
+  }
+]

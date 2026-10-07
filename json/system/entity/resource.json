@@ -1,0 +1,245 @@
+{
+  "title": "Resource",
+  "databaseType": [],
+  "collection_name": "resource",
+  "mongodb_save_data": "resource",
+  "use_parent_delete_childs": false,
+  "use_sync_relationship_multiply_language": false,
+  "use_timestamp": false,
+  "use_import": false,
+  "comment_mode": false,
+  "use_slug": false,
+  "public_entity": false,
+  "unique_keys": "",
+  "json_schema": {
+    "type": "object",
+    "properties": {
+      "title": {
+        "type": "string",
+        "widget": "shortAnswer",
+        "title": "Title",
+        "filter": true,
+        "description": "Nhập title cho resource"
+      },
+      "slug": {
+        "type": "string",
+        "widget": "UriKeyGen",
+        "title": "Slug",
+        "filter": true,
+        "description": "Nhập slug"
+      },
+      "entity": {
+        "title": "Entity",
+        "type": "string",
+        "widget": "relation",
+        "typeRelation": {
+          "title": "entity",
+          "entity": "entity",
+          "type": "1-n",
+          "filter": {
+            "combinator": "and",
+            "rules": [],
+            "id": "cc96d5d7-9cd1-48a7-af64-1137a456e0af"
+          }
+        },
+        "filter": true,
+        "typeSelect": "multiple",
+        "description": "Chọn entity cho resource",
+        "refValue": "collection_name"
+      },
+      "is_base": {
+        "title": "Is Base",
+        "type": "boolean",
+        "default": false,
+        "widget": "boolean",
+        "hidden": true
+      },
+      "mongorest": {
+        "title": "Mongo Rest",
+        "type": "string",
+        "widget": "shortAnswer",
+        "filter": true,
+        "description": "Nhập thông tin"
+      },
+      "action": {
+        "title": "Action",
+        "type": "string",
+        "widget": "relation",
+        "typeRelation": {
+          "_id": "action",
+          "title": "action",
+          "type": "1-n",
+          "filter": {
+            "combinator": "and",
+            "rules": [],
+            "id": "f9c6b724-ad52-493f-bf3f-606f9d0e138c"
+          }
+        },
+        "description": "Chọn action",
+        "refValue": "slug",
+        "filter": true,
+        "typeSelect": "multiple"
+      },
+      "setting": {
+        "title": "Setting Resource",
+        "type": "object",
+        "properties": {
+          "context_data_resource": {
+            "items": {
+              "type": "object",
+              "properties": {
+                "entity": {
+                  "type": "string",
+                  "typeRelation": {
+                    "_id": "entity",
+                    "title": "entity",
+                    "type": "1-n",
+                    "filter": {
+                      "combinator": "and",
+                      "rules": [],
+                      "id": "dfab4401-9e22-4282-8c30-91da50da72ab"
+                    }
+                  },
+                  "widget": "relation",
+                  "typeSelect": "multiple",
+                  "title": "Entity",
+                  "refValue": "collection_name"
+                },
+                "mongorest": {
+                  "title": "Mongorest",
+                  "type": "string",
+                  "widget": "textarea",
+                  "customRole": "textarea"
+                },
+                "alias": {
+                  "title": "Alias",
+                  "type": "string",
+                  "widget": "textarea",
+                  "customRole": "textarea"
+                }
+              },
+              "dependencies": {},
+              "required": [],
+              "title": ""
+            },
+            "type": "array",
+            "title": "Context Data Resource"
+          },
+          "switch": {
+            "type": "string",
+            "widget": "textarea",
+            "customRole": "textarea",
+            "title": "Switch"
+          },
+          "Case": {
+            "items": {
+              "type": "object",
+              "properties": {
+                "value": {
+                  "title": "value",
+                  "type": "string",
+                  "widget": "textarea",
+                  "customRole": "textarea"
+                },
+                "policy": {
+                  "widget": "longAnswer",
+                  "customRole": "textarea",
+                  "title": "policy",
+                  "type": "string"
+                }
+              },
+              "dependencies": {},
+              "required": []
+            },
+            "title": "Case",
+            "type": "array"
+          }
+        },
+        "dependencies": {},
+        "required": []
+      }
+    },
+    "dependencies": {},
+    "required": [
+      "title"
+    ]
+  },
+  "ui_schema": {
+    "title": {
+      "ui:widget": "shortAnswer"
+    },
+    "slug": {
+      "ui:widget": "UriKeyGen"
+    },
+    "entity": {
+      "ui:widget": "relation"
+    },
+    "is_base": {
+      "ui:widget": "boolean"
+    },
+    "mongorest": {
+      "ui:widget": "shortAnswer"
+    },
+    "action": {
+      "ui:widget": "relation"
+    },
+    "setting": {
+      "context_data_resource": {
+        "items": {
+          "entity": {
+            "ui:widget": "relation"
+          },
+          "mongorest": {
+            "ui:widget": "textarea"
+          },
+          "alias": {
+            "ui:widget": "textarea"
+          },
+          "ui:order": [
+            "entity",
+            "mongorest",
+            "alias"
+          ]
+        }
+      },
+      "switch": {
+        "ui:widget": "textarea"
+      },
+      "Case": {
+        "items": {
+          "value": {
+            "ui:widget": "textarea"
+          },
+          "policy": {
+            "ui:widget": "longAnswer"
+          },
+          "ui:order": [
+            "value",
+            "policy"
+          ]
+        }
+      },
+      "ui:order": [
+        "context_data_resource",
+        "switch",
+        "Case"
+      ]
+    },
+    "ui:order": [
+      "title",
+      "slug",
+      "entity",
+      "is_base",
+      "mongorest",
+      "action",
+      "setting"
+    ]
+  },
+  "entity_setting": {},
+  "customTabsList": [],
+  "reason": null,
+  "use_locale": false,
+  "use_block": false,
+  "languages": [],
+  "system": true
+}

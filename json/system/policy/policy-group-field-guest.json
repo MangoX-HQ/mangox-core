@@ -1,0 +1,15 @@
+{
+  "title": "policy group-field guest",
+  "slug": "policy-group-field-guest",
+  "resource": ["group-field"],
+  "action": ["list-public", "read-public"],
+  "role": ["guest"],
+  "root_entity": ["group-field"],
+  "condition": "select=*",
+  "data": [],
+  "condition_context": null,
+  "condtion_body": "",
+  "code_context": "",
+  "code": "",
+  "piority": "0"
+}
