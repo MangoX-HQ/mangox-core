@@ -1,3 +1,4 @@
+
 # MangoX Core
 
 MangoX Core is a **configuration-driven API server for MongoDB**. You describe your data model and access rules in JSON files; MangoX turns them into a REST API with fine-grained, per-role policies — no controller code required.
